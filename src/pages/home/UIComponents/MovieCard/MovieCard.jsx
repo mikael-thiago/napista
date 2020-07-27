@@ -1,10 +1,13 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./moviecard.css";
 import { Link } from "react-router-dom";
+import { favoriteMovie, unfavoriteMovie } from "../../../../api-calls/api-calls";
 
 const MovieCard = ({ movie, imageBaseUrl }) => {
 
     const favoriteButtonRef = useRef();
+
+    const [favorite, setFavorite] = useState(movie.favorite);
 
     const posterUrl = movie.poster_path ? imageBaseUrl + "w342/" + movie.poster_path : "";
 
@@ -16,8 +19,16 @@ const MovieCard = ({ movie, imageBaseUrl }) => {
         favoriteButtonRef.current.style.display = "";
     }
 
-    const favoriteMovie = () => {
-        console.log("FAVORITEI!!");
+    const handleFavoriteMovie = () => {
+        favoriteMovie(movie.id).then((response) => {
+            setFavorite(true);
+        });
+    }
+
+    const handleUnfavoriteMovie = () => {
+        unfavoriteMovie(movie.id).then((response) => {
+            setFavorite(false);
+        });
     }
 
     return (
@@ -30,8 +41,8 @@ const MovieCard = ({ movie, imageBaseUrl }) => {
                     {movie.title}
                 </div>
             </Link>
-            <button className="favorite-movie-button" onMouseEnter={showFavoriteButton} onMouseLeave={hideFavoriteButton} onClick={favoriteMovie} ref={favoriteButtonRef}>
-                <span className="favorite-movie-icon glyphicon glyphicon-heart"></span>
+            <button className={"favorite-movie-button " + (favorite ? "unfavorite" : "favorite")} onMouseEnter={showFavoriteButton} onMouseLeave={hideFavoriteButton} onClick={favorite ? handleUnfavoriteMovie : handleFavoriteMovie} ref={favoriteButtonRef}>
+                <span className={"favorite-movie-icon " + (favorite ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-heart")}></span>
             </button>
         </div>
     )
