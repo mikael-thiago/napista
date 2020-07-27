@@ -1,0 +1,44 @@
+.carousel{
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 25px 0;
+    position: relative;
+    color: white;
+}
+
+.carousel-span{
+    display: flex;
+    justify-content: space-between;
+}
+
+.carousel-title{
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.carousel-content{
+    margin: 10px 0;
+    height: min-content;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-basis: auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+}
+
+.carousel-controller{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 2.5em;
+    transition: .1s;
+}
+
+.carousel-controller:hover{
+    font-size: 3em;
+}
