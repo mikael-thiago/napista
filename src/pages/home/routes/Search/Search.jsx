@@ -31,7 +31,7 @@ const SearchPage = withRouter(({ match }) => {
     const totalPages = searchResult.totalPages;
 
     useEffect(() => {
-        getSearchResult(getAPIkey(), query, page).then((searchResultResponse) => {
+        getSearchResult(query, page).then((searchResultResponse) => {
             setSearchResult({
                 results: searchResultResponse.results,
                 totalPages: searchResultResponse.total_pages
@@ -59,6 +59,7 @@ const SearchPage = withRouter(({ match }) => {
             </div>
 
             <div className="search-pages-links" >
+
                 <button className="search-pages-links-controller" onClick={() => { pagesLinksRef.current.scrollLeft -= 200 }} style={{ position: "absolute", left: "15%" }}>
                     <span className="glyphicon glyphicon-chevron-left"></span>
                 </button>

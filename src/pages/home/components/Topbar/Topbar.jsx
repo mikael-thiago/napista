@@ -35,7 +35,6 @@ const NavbarButton = () => {
     const toggleNavbar = () => {
         let navbar = document.getElementsByClassName("navbar")[0];
 
-        console.log(navbar.style);
         if (!navbar.style.transform)
             navbar.style.transform = "translateX(0)";
         else

@@ -20,7 +20,7 @@ const Navbar = () => {
                         </li>
 
                         <li className="navbar-item">
-                            <Link className="navbar-link" to="/favoritos">
+                            <Link className="navbar-link" to="/favorites">
                                 <span className="navbar-item-icon glyphicon glyphicon-heart"></span>
                                 <div className="navbar-item-text">Favoritos</div>
                             </Link>

@@ -9,7 +9,7 @@ const Principal = () => {
     const [movieData, setMovieData] = useState([]);
 
     useEffect(() => {
-        getMostPopularMovies(getAPIkey(), 1).then((mostPopularMovies) => {
+        getMostPopularMovies(1).then((mostPopularMovies) => {
             setMovieData(mostPopularMovies);
         });
     }, []);
