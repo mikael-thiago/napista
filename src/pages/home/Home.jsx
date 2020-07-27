@@ -7,6 +7,7 @@ import Movie from "./routes/Movie/Movie";
 import Topbar from "./components/Topbar/Topbar";
 import SearchPage from "./routes/Search/Search";
 import Navbar from "./components/Navbar/Navbar";
+import FavoritesPage from "./routes/Favorites/Favorites";
 
 
 const Home = () => {
@@ -26,12 +27,17 @@ const Home = () => {
                         <SearchPage />
                     </Route>
 
+                    <Route path={"/favorites"}>
+                        <FavoritesPage />
+                    </Route>
+
                     <Route exact path={""}>
                         <Principal />
                     </Route>
 
                 </Switch>
             </div>
+
         </div>
     );
 }
