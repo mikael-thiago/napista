@@ -1,0 +1,82 @@
+.navbar{
+    height: 100vh;
+    width: 300px;
+
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    grid-template-areas: "navbar-header" "navbar-body";
+    
+    position: fixed;
+    transform: translateX(-100%);
+    transition: .5s;
+
+    background-color: #353535;
+
+    z-index: 3;
+}
+
+.navbar-header{
+    grid-area: navbar-header;
+    box-sizing: border-box;
+    padding: 0 25px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-body{
+    grid-area: navbar-body;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-nav{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar-nav > ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-item{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 8px;
+    height: 50px;
+    text-align: center;
+    font-size: 1.2em;
+    border-radius: 5px;
+    transition: .5s;
+}
+
+.navbar-item:hover{
+    background-color: #444444;
+}
+
+.navbar-link{
+    width: 100%;
+    height: 50px;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-link:visited, .navbar-link:focus{
+    text-decoration: none;
+    color: inherit;
+}
+
+.navbar-link:hover{
+    text-decoration: none;
+    color: white;
+}
+
+.navbar-item-icon{
+    margin: 0 10px;
+}
