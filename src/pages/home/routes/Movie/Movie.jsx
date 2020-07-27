@@ -27,11 +27,15 @@ const Movie = ({ match }) => {
 
     const [movieData, setMovieData] = useState({
         backdrop_path: "",
+        poster_path: "",
         genres: [],
         release_date: "",
         cast: [],
         runtime: 0
     });
+
+    const release_date = movieData.release_date || "";
+    const back_image_url = movieData.backdrop_path || movieData.poster_path || "";
 
     const durationTime = parseDuratinTime(movieData.runtime);
 
@@ -39,14 +43,13 @@ const Movie = ({ match }) => {
 
     useEffect(() => {
         getMovie(movie_id).then((movie) => {
-            console.log(movie);
             setMovieData(movie);
         })
     }, []);
 
     return (
         <>
-            <div className="movie-banner" style={{ backgroundImage: "url('" + imageBaseUrl.substr(0, (imageBaseUrl.length - 1)) + "/original" + (movieData.backdrop_path || movieData.poster_path) + "')" }}>
+            <div className="movie-banner" style={{ backgroundImage: "url('" + imageBaseUrl + "original" + back_image_url + "')" }}>
 
             </div>
 
@@ -77,8 +80,8 @@ const Movie = ({ match }) => {
                             <div className="separator"> • </div>
 
                             <div className="movie-release">
-                                {movieData.release_date.split("-").reverse().map((datePart, index) => (
-                                    (index === movieData.release_date.split("-").length - 1) ? datePart : datePart + "/"
+                                {release_date.split("-").reverse().map((datePart, index) => (
+                                    (index === release_date.split("-").length - 1) ? datePart : datePart + "/"
                                 ))}
                             </div>
 
