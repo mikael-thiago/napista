@@ -30,7 +30,8 @@ const Movie = ({ match }) => {
     const durationTime = parseDuratinTime(movieData.runtime);
 
     useEffect(() => {
-        getMovie(getAPIkey(), movie_id).then((movie) => {
+        getMovie(movie_id).then((movie) => {
+            console.log(movie);
             setMovieData(movie);
         })
     }, []);
@@ -43,8 +44,8 @@ const Movie = ({ match }) => {
 
             <div className="movie-wrapper">
 
+                <div className="movie-info-banner">
 
-                <div className="movie-info-wrapper">
                     <div className="movie-info">
                         <div className="movie-title">
                             {movieData.title}

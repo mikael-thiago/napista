@@ -1,6 +1,5 @@
 import React from "react";
 import { getImageBaseUrl } from "../../../../../../services/api_config";
-import blank_avatar from "../../../../../../images/blank-avatar.png";
 import "./castItem.css";
 
 const CastItem = ({ cast }) => {
@@ -11,7 +10,7 @@ const CastItem = ({ cast }) => {
     return (
         <div className="cast-item">
             <div className="cast-photo">
-                <img src={imageUrl ? imageUrl : blank_avatar} alt="" />
+                <img src={imageUrl ? imageUrl : ""} alt="" />
             </div>
 
             <div className="cast-text">

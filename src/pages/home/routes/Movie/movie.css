@@ -9,7 +9,7 @@
     filter: brightness(.6);
 }
 
-.movie-info-wrapper{
+.movie-info-banner{
     height: 600px;
     min-height: 600px;
     width: 100%;
@@ -30,7 +30,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    top: 50px;
+    top: 60px;
 }
 
 .movie-info > .movie-title{
