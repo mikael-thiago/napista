@@ -9,6 +9,23 @@ import { Link } from "react-router-dom";
 //Styles
 import "./moviecard.css";
 
+function detectMob() {
+    const toMatch = [
+        /Android/i,
+        /webOS/i,
+        /iPhone/i,
+        /iPad/i,
+        /iPod/i,
+        /BlackBerry/i,
+        /Windows Phone/i
+    ];
+
+    return toMatch.some((toMatchItem) => {
+        return navigator.userAgent.match(toMatchItem);
+    });
+
+}
+
 
 const MovieCard = ({ movie, imageBaseUrl }) => {
 
@@ -48,7 +65,7 @@ const MovieCard = ({ movie, imageBaseUrl }) => {
                     {movie.title}
                 </div>
             </Link>
-            <button className={"favorite-movie-button " + (favorite ? "unfavorite" : "favorite")} onMouseEnter={showFavoriteButton} onMouseLeave={hideFavoriteButton} onClick={favorite ? handleUnfavoriteMovie : handleFavoriteMovie} ref={favoriteButtonRef}>
+            <button style={{ display: (detectMob() ? "flex" : "none") }} className={"favorite-movie-button " + (favorite ? "unfavorite" : "favorite")} onMouseEnter={showFavoriteButton} onMouseLeave={hideFavoriteButton} onClick={favorite ? handleUnfavoriteMovie : handleFavoriteMovie} ref={favoriteButtonRef}>
                 <span className={"favorite-movie-icon " + (favorite ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-heart")}></span>
             </button>
         </div>
