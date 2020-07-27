@@ -4,7 +4,7 @@ const BASE_URL = "http://localhost:4000/";
 
 const getMostPopularMovies = async (page) => {
 
-    const URL = BASE_URL + "movie/popular?page=" + page + "&language=pt";
+    const URL = BASE_URL + "movie/popular?page=" + page + "&language=pt-BR";
 
     const result = (await axios.get(URL));
 
@@ -13,7 +13,7 @@ const getMostPopularMovies = async (page) => {
 
 const getMovie = async (movie_id) => {
 
-    const MOVIE_URL = BASE_URL + "movie/" + movie_id + "?language=pt";
+    const MOVIE_URL = BASE_URL + "movie/" + movie_id + "?language=pt-BR";
 
     let movieResult = (await axios.get(MOVIE_URL));
 
@@ -21,7 +21,7 @@ const getMovie = async (movie_id) => {
 }
 
 const getFavoritedMovies = async () => {
-    const FAVORITED_MOVIES_URL = BASE_URL + "movie/favoriteds?language=pt";
+    const FAVORITED_MOVIES_URL = BASE_URL + "movie/favoriteds?language=pt-BR";
 
     const result = (await axios.get(FAVORITED_MOVIES_URL));
 
@@ -43,7 +43,7 @@ const unfavoriteMovie = async (movie_id) => {
 
 const getSearchResult = async (query, page) => {
 
-    const SEARCH_URL = BASE_URL + "search/movie?query=" + query + "&page=" + page + "&language=pt";
+    const SEARCH_URL = BASE_URL + "search/movie?query=" + query + "&page=" + page + "&language=pt-BR";
 
     let searchResult = (await axios.get(SEARCH_URL));
 
