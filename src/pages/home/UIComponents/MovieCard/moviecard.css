@@ -80,6 +80,19 @@
     font-size: 1.6em;
 }
 
+@media only screen {
+    .favorite-movie-button{
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .movie-card{
+        width: 130px;
+        height: 180px;
+    }
+}
+
 @media screen and (max-width: 450px){
     .movie-card{
         width: 100px;
@@ -87,8 +100,14 @@
     }
 
     .favorite-movie-button{
-        display: flex;
         width: 35px;
         height: 35px;
+        font-size: 1.2em;
+    }
+
+    .favorite-movie-button:hover{
+        width: 37px;
+        height: 37px;
+        font-size: 1.3em;
     }
 }

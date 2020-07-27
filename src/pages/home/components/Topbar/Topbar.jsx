@@ -1,7 +1,10 @@
 import React, { useRef } from "react";
-import "./topbar.css";
 
+//Components
 import { withRouter } from "react-router-dom";
+
+//Styles
+import "./topbar.css";
 
 const SearchInput = withRouter(({ history, match }) => {
 

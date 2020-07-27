@@ -1,4 +1,6 @@
 import React from "react";
+
+//Styles
 import "./section.css";
 
 const Section = ({ children, title, itemWidth = 200, scrollable = false, maxHeight = "" }) => {

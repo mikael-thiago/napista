@@ -1,13 +1,16 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
-import Principal from "./routes/Principal/Principal";
 
-import "./home.css"
+//Components
 import Movie from "./routes/Movie/Movie";
 import Topbar from "./components/Topbar/Topbar";
 import SearchPage from "./routes/Search/Search";
 import Navbar from "./components/Navbar/Navbar";
 import FavoritesPage from "./routes/Favorites/Favorites";
+import Principal from "./routes/Principal/Principal";
+import { Switch, Route } from "react-router-dom";
+
+//Styles
+import "./home.css"
 
 
 const Home = () => {

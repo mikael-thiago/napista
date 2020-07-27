@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
-import "./movie.css";
 import { withRouter } from "react-router-dom";
+
+//Function
 import { getMovie } from "../../../../api-calls/api-calls";
-import { getAPIkey, getImageBaseUrl } from "../../../../services/api_config";
-import "./movie.css";
+import { getImageBaseUrl } from "../../../../services/api_config";
+
+
+//Components
 import CastItem from "./components/CastItem/CastItem";
 import Carousel from "../../UIComponents/Carousel/Carousel";
+
+//Styles
+import "./movie.css";
 
 const parseDuratinTime = (min) => {
     let hours = parseInt(min / 60), minutes = min % 60;
@@ -28,6 +34,8 @@ const Movie = ({ match }) => {
     });
 
     const durationTime = parseDuratinTime(movieData.runtime);
+
+    const itemWidth = window.innerWidth <= 450 ? 70 : (window.innerWidth <= 800 ? 85 : 100);
 
     useEffect(() => {
         getMovie(movie_id).then((movie) => {
@@ -100,13 +108,13 @@ const Movie = ({ match }) => {
 
                 <div className="movie-info-body">
 
-                    <Carousel >
+                    <Carousel itemWidth={itemWidth}>
                         {movieData.cast.map((cast_p, index) => (
                             <CastItem cast={cast_p} key={index} />
                         ))}
                     </Carousel>
 
-                    <div class="spacer" style={{ height: "50px", minHeight: "50px" }}>
+                    <div className="spacer" style={{ height: "50px", minHeight: "50px" }}>
 
                     </div>
                 </div>

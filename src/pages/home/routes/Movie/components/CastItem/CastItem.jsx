@@ -1,5 +1,7 @@
 import React from "react";
 import { getImageBaseUrl } from "../../../../../../services/api_config";
+
+//Styles
 import "./castItem.css";
 
 const CastItem = ({ cast }) => {
@@ -10,7 +12,7 @@ const CastItem = ({ cast }) => {
     return (
         <div className="cast-item">
             <div className="cast-photo">
-                <img src={imageUrl ? imageUrl : ""} alt="" />
+                <img src={imageUrl} alt="" />
             </div>
 
             <div className="cast-text">

@@ -1,7 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "./navbar.css";
+
+//Components
 import { NavbarButton } from "../Topbar/Topbar";
+import { Link } from "react-router-dom";
+
+//Styles
+import "./navbar.css";
 
 const Navbar = () => {
     return (

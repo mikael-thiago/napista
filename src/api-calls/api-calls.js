@@ -2,6 +2,7 @@ import axios from "axios";
 
 const BASE_URL = "http://localhost:4000/";
 
+//Movies calls
 const getMostPopularMovies = async (page) => {
 
     const URL = BASE_URL + "movie/popular?page=" + page + "&language=pt-BR";
@@ -41,6 +42,7 @@ const unfavoriteMovie = async (movie_id) => {
     const result = (await axios.delete(UNFAVORITE_URL));
 }
 
+//Search calls
 const getSearchResult = async (query, page) => {
 
     const SEARCH_URL = BASE_URL + "search/movie?query=" + query + "&page=" + page + "&language=pt-BR";

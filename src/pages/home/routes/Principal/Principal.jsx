@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
+
+//Functions
 import { getMostPopularMovies } from "../../../../api-calls/api-calls";
-import { getAPIkey, getImageBaseUrl } from "../../../../services/api_config";
+import { getImageBaseUrl } from "../../../../services/api_config";
+
+//Components
 import Section from "../../UIComponents/Section/Section";
 import MovieCard from "../../UIComponents/MovieCard/MovieCard";
+
+//Styles
 import "./principal.css";
+
 const Principal = () => {
 
     const [movieData, setMovieData] = useState([]);

@@ -102,9 +102,11 @@
     color: #dddddd;
 }
 
+
 @media screen and (max-width: 450px){
     .movie-banner{
-        height: 400px;
+        height: 500px;
+        min-height: 500px;
         width: 100%;
         background-position: center;
         background-size: 100% 100%;
@@ -114,9 +116,9 @@
         filter: brightness(.6);
     }
     
-    .movie-info-wrapper{
-        height: 400px;
-        min-height: 400px;
+    .movie-info-banner{
+        height: 500px;
+        min-height: 500px;
         width: 100%;
         position: relative;
         display: flex;

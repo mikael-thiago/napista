@@ -1,4 +1,6 @@
 import React, { useRef } from "react";
+
+//Styles
 import "./carousel.css";
 
 const Carousel = ({ cast, itemWidth = 100, children }) => {

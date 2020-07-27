@@ -1,9 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
 import { withRouter, Link } from "react-router-dom";
+
+//Functions
 import { getSearchResult } from "../../../../api-calls/api-calls";
-import { getAPIkey, getImageBaseUrl } from "../../../../services/api_config";
+import { getImageBaseUrl } from "../../../../services/api_config";
+
+//Components
 import Section from "../../UIComponents/Section/Section";
 import MovieCard from "../../UIComponents/MovieCard/MovieCard";
+
+//Styles
 import "./search.css";
 
 const generateArray = (n) => {

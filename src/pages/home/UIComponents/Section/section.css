@@ -35,6 +35,13 @@
     overflow-y: scroll;
 }
 
+@media screen and (max-width: 800px){
+    .section-content-200{
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        
+    }
+}
+
 @media screen and (max-width: 450px){
     .section-content-200{
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));

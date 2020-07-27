@@ -19,7 +19,6 @@
     display: none;
     justify-content: center;
     align-items: center;
-    transition: .1s;
     font-size: 1em;
     color: white;
     z-index: 2;
@@ -27,7 +26,19 @@
 }
 
 .unfavorite-movie-button:hover{
-    width: 32px;
-    height: 32px;
-    font-size: 1.2em;
+    background-color: #383838;
+}
+
+@media only screen{
+    .unfavorite-movie-button{
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 450px){
+    .unfavorite-movie-button{
+        width: 20px;
+        height: 20px;
+        font-size: .8em;
+    }
 }

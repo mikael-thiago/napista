@@ -1,9 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
-import { getFavoritedMovies, unfavoriteMovie } from "../../../../api-calls/api-calls";
-import Section from "../../UIComponents/Section/Section";
-import { getImageBaseUrl } from "../../../../services/api_config";
-import { Link } from "react-router-dom";
 
+//Functions
+import { getImageBaseUrl } from "../../../../services/api_config";
+import { getFavoritedMovies, unfavoriteMovie } from "../../../../api-calls/api-calls";
+
+//Components
+import { Link } from "react-router-dom";
+import Section from "../../UIComponents/Section/Section";
+
+//Styles
 import "./favorites.css";
 
 const FavoriteMovieCard = ({ movie, imageBaseUrl, unfavoriteFunction }) => {

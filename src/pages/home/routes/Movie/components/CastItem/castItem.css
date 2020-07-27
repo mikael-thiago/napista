@@ -27,6 +27,17 @@
     color: #cccccc;
 }
 
+@media screen and (max-width: 800px){
+    .cast-item{
+        width: 85px;
+    }
+
+    .cast-photo{
+        width: 85px;
+        height: 85px;
+    }
+}
+
 @media screen and (max-width: 450px){
     .cast-item{
         width: 70px;

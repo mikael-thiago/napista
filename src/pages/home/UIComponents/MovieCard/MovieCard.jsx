@@ -1,7 +1,14 @@
 import React, { useRef, useState } from "react";
-import "./moviecard.css";
-import { Link } from "react-router-dom";
+
+//Functions
 import { favoriteMovie, unfavoriteMovie } from "../../../../api-calls/api-calls";
+
+//Components
+import { Link } from "react-router-dom";
+
+//Styles
+import "./moviecard.css";
+
 
 const MovieCard = ({ movie, imageBaseUrl }) => {
 
