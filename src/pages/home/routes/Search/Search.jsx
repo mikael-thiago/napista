@@ -3,7 +3,7 @@ import { withRouter, Link } from "react-router-dom";
 
 //Functions
 import { getSearchResult } from "../../../../api-calls/api-calls";
-import { getImageBaseUrl } from "../../../../services/api_config";
+import { getImageBaseUrl } from "../../../../api_config";
 
 //Components
 import Section from "../../UIComponents/Section/Section";

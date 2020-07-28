@@ -21,6 +21,7 @@
     flex-direction: column;
     align-items: center;
     top: 0px;
+    scroll-behavior: smooth;
 }
 
 .movie-info-banner{

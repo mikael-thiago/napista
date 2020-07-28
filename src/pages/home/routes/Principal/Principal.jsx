@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 //Functions
 import { getMostPopularMovies } from "../../../../api-calls/api-calls";
-import { getImageBaseUrl } from "../../../../services/api_config";
+import { getImageBaseUrl } from "../../../../api_config";
 
 //Components
 import Section from "../../UIComponents/Section/Section";

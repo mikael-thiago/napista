@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import "./recommendationItem.css";
-import { getImageBaseUrl } from "../../../../../../services/api_config";
+import { getImageBaseUrl } from "../../../../../../api_config";
 import { Link } from "react-router-dom";
 
 const RecommendationItem = ({ recommendation }) => {
@@ -22,7 +22,7 @@ const RecommendationItem = ({ recommendation }) => {
     }
 
     return (
-        <Link to={"/movie/" + recommendation.id} className="recommendation-item" onMouseEnter={brightOnHover} onMouseLeave={unbrightOnHover}>
+        <Link to={"/movie/" + recommendation.id} className="recommendation-item" onClick={() => document.getElementsByClassName("movie-wrapper")[0].scrollTo(0, 0)} onMouseEnter={brightOnHover} onMouseLeave={unbrightOnHover}>
             <div className="recommendation-item-background"
                 ref={cardBackgroundRef}
                 style={{ backgroundImage: "url('" + imageBaseUrl + "w780" + recommendation.backdrop_path + "')" }}

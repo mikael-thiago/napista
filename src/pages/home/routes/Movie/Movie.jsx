@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 
 //Function
 import { getMovie, unfavoriteMovie, favoriteMovie, isFavorite } from "../../../../api-calls/api-calls";
-import { getImageBaseUrl } from "../../../../services/api_config";
+import { getImageBaseUrl } from "../../../../api_config";
 
 
 //Components

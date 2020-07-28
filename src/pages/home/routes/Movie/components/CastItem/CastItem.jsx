@@ -1,5 +1,5 @@
 import React from "react";
-import { getImageBaseUrl } from "../../../../../../services/api_config";
+import { getImageBaseUrl } from "../../../../../../api_config";
 
 //Styles
 import "./castItem.css";

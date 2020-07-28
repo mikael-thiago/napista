@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 
 //Functions
-import { getImageBaseUrl } from "../../../../services/api_config";
-import { getFavoritedMovies, unfavoriteMovie, getMovie } from "../../../../api-calls/api-calls";
+import { getImageBaseUrl } from "../../../../api_config";
+import { getFavoritedMovies, unfavoriteMovie } from "../../../../api-calls/api-calls";
 
 //Components
 import { Link } from "react-router-dom";

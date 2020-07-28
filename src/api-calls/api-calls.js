@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getAPIKey, getBaseUrl } from "../services/api_config";
+import { getAPIKey, getBaseUrl } from "../api_config";
 
 const API_KEY = getAPIKey();
 const BASE_URL = getBaseUrl();
@@ -67,8 +67,6 @@ const isFavorite = (movie_id) => {
 const getSearchResult = async (query, page) => {
 
     const SEARCH_URL = BASE_URL + "search/movie?api_key=" + API_KEY + "&query=" + query + "&page=" + page + "&language=pt-BR";
-
-    console.log(SEARCH_URL);
 
     let searchResult = (await axios.get(SEARCH_URL));
 
