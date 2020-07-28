@@ -7,7 +7,7 @@ import "./castItem.css";
 const CastItem = ({ cast }) => {
 
     const imageBaseUrl = getImageBaseUrl();
-    const imageUrl = (cast.profile_path !== null && cast.profile_path !== undefined) ? imageBaseUrl + "/original" + cast.profile_path : "";
+    const imageUrl = (cast.profile_path !== null && cast.profile_path !== undefined) ? imageBaseUrl + "/w185" + cast.profile_path : "";
 
     return (
         <div className="cast-item">
