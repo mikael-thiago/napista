@@ -84,6 +84,7 @@ const Movie = ({ match }) => {
         poster_path: "",
         release_date: "",
         budget: "",
+        revenue: "",
         popularity: "",
         production_countries: [],
         cast: [],
@@ -97,8 +98,12 @@ const Movie = ({ match }) => {
     });
 
     const release_date = movieData.release_date || "";
+
     const back_image_url = movieData.backdrop_path || movieData.poster_path || "";
+
     const budget = movieData.budget || "";
+
+    const revenue = movieData.revenue || "";
 
     const favorite = movieData.favorite;
 
@@ -157,7 +162,8 @@ const Movie = ({ match }) => {
                             <div className="movie-tagline">
                                 {movieData.tagline}
                             </div>
-                            <div className="movie-genres-release-popularity-budget">
+
+                            <div className="movie-genres-release-popularity">
 
                                 <div className="movie-genres">
                                     {"Gêneros:" + movieData.genres.map((genre, index) => ((index === movieData.genres.length - 1) ? " " + genre.name : " " + genre.name))
@@ -186,9 +192,11 @@ const Movie = ({ match }) => {
                                     </div></>
                                 ) : <></>}
 
+                            </div>
+
+                            <div className="movie-budget-revenue">
                                 {budget !== "" ? (
                                     <>
-                                        <div className="separator"> • </div>
 
                                         <div className="movie-budget">
                                             {"Orçamento: " + (mainProductionCountry.iso_3166_1 === "US" ? "U$ " : "R$ ") + budget.toLocaleString("pt-BR")}
@@ -196,6 +204,15 @@ const Movie = ({ match }) => {
                                     </>
                                 ) : <></>}
 
+                                {revenue !== "" ? (
+                                    <>
+                                        <div className="separator"> • </div>
+
+                                        <div className="movie-revenue">
+                                            {"Receita: " + (mainProductionCountry.iso_3166_1 === "US" ? "U$ " : "R$ ") + revenue.toLocaleString("pt-BR")}
+                                        </div>
+                                    </>
+                                ) : <></>}
                             </div>
                             <div className="movie-description">
                                 {movieData.overview}
