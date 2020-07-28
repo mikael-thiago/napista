@@ -1,68 +1,34 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Dependencias
 
-## Available Scripts
+* NodeJS
+* Algum servidor de banco de dados MySQL
+* Algum gerenciador de pacotes JavaScript
 
-In the project directory, you can run:
+# Instalação
 
-### `yarn start`
+* Acesse a pasta raiz do projeto e execute o comando "npm install"
+* Acesse a pasta node do projeto e execute o comando "npm install"
+* Acesse seu servidor de banco de dados e execute o dump encontrado na pasta database_dump
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Configuração
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Banco de dados
 
-### `yarn test`
+Acesse o arquivo "node/src/database/databaseConfig.json" e coloque as credenciais necessárias para que o servidor node possa acessar seu servidor de banco de dados, isto é:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Porta
+* Usuário
+* Senha
 
-### `yarn build`
+## Acesso a API
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Adiquira uma API_KEY e em seguida acesse o arquivo "node/src/api_config/api_config.js" e a atribua como valor para o campo "API_KEY".
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+# Execução
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Abra um terminal, acesse a pasta node e execute o comando "node index.js".
+* Abra outro terminal, acesse a pasta raiz do projeto e execute npm start.
+* Por fim, o navegador será aberto e a aplicação estará pronta para ser utilizada.
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

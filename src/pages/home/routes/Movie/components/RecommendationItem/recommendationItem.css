@@ -17,7 +17,7 @@
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-color: #555555;
-    filter: brightness(.5);
+    filter: brightness(.7);
     transition: .5s;
 }
 
@@ -28,8 +28,17 @@
     justify-content: center;
     align-items: center;
     bottom: 20px;
+    text-shadow: 2px 2px 3px black;
 }
 
+.recomendation-movie-rating-icon{
+    color: yellow;
+    font-size: 1em;
+}
+
+.recommendation-item-rating{
+    margin: 0px 10px;
+}
 .recommendation-item-text-wrapper{
     width: 90%;
 }
@@ -40,13 +49,13 @@
     color: white;
 }
 
-.recommendation-item-year-average{
+.recommendation-item-year-rating{
     display: flex;
     font-weight: 500;
     color: #dddddd;
 }
 
-.recommendation-item-year-average *{
+.recommendation-item-year-rating *{
     margin-right: 10px;
 }
 

@@ -41,7 +41,8 @@ const MovieCard = ({ movie, imageBaseUrl }) => {
     }
 
     const hideFavoriteButton = () => {
-        favoriteButtonRef.current.style.display = "";
+        if (!detectMob())
+            favoriteButtonRef.current.style.display = "";
     }
 
     const handleFavoriteMovie = () => {
@@ -57,7 +58,7 @@ const MovieCard = ({ movie, imageBaseUrl }) => {
     }
 
     const brightOnHover = () => {
-        cardBackgroundRef.current.style.filter = "brightness(.65)";
+        cardBackgroundRef.current.style.filter = "brightness(1)";
     }
 
     const unbrightOnLeave = () => {
@@ -66,9 +67,8 @@ const MovieCard = ({ movie, imageBaseUrl }) => {
 
     return (
         <div className="movie-card" onMouseEnter={brightOnHover} onMouseLeave={unbrightOnLeave}>
-            <Link to={"/movie/" + movie.id} className="movie-card-content" onMouseEnter={showFavoriteButton} onMouseLeave={hideFavoriteButton}>
-                <div className="movie-card-background" ref={cardBackgroundRef}>
-                    <img src={posterUrl} alt="" />
+            <Link to={"/movie/" + movie.id} className="movie-card-content" onMouseEnter={showFavoriteButton} onMouseLeave={hideFavoriteButton} style={{ color: (detectMob() ? "white" : "") }}>
+                <div className="movie-card-background" ref={cardBackgroundRef} style={{ backgroundImage: "url('" + posterUrl + "')" }}>
                 </div>
                 <div className="movie-card-text-wrapper">
                     <div className="movie-card-text">

@@ -4,10 +4,11 @@
     background-position: center;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    position: relative;
+    position: absolute;
     z-index: 0;
     filter: brightness(.6);
     background-color: #555555;
+    top: 0px;
 }
 
 .movie-info-banner{
@@ -20,6 +21,7 @@
     justify-content: center;
     align-items: center;
     color: white;
+    text-shadow: 2px 2px 3px black;
 }
 
 .movie-wrapper{
@@ -31,27 +33,31 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    top: 60px;
+    top: 0px;
 }
 
-.movie-info > .movie-title{
-    font-size: 5em;
+.movie-title{
+    font-size: 6em;
     text-align: left;
     font-weight: bold;
     overflow: visible;
     white-space: wrap;
 }
 
-.movie-info > .movie-description{
-    font-weight: 500;
-    font-size: 1em;
+.movie-description{
+    font-size: 1.1em;
     margin: 10px 0;
 }
 
-.movie-info > .movie-genres-release-popularity-budget{
+.movie-genres-release-popularity-budget{
+    font-size: 1.1em;
     margin: 10px 0;
     display: flex;
     align-items: center;
+}
+
+.movie-tagline{
+    font-size: 1.1em;
 }
 
 .separator{
@@ -71,19 +77,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #282828;
+    background-color: #181818;
     clear: initial;
 }
 
+
 .movie-rating{
-    height: 45px;
-    width: 80px;
+    height: 50px;
+    width: 100px;
     background-color: #282828;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    font-size: 1.1em;
+    box-shadow: 2px 2px 3px black;
+    margin-top: 20px;
 }
 
 .movie-rating-container{
@@ -94,12 +104,12 @@
 
 .movie-rating-icon{
     color: yellow;
-    font-size: 1em;
+    font-size: 1.5em;
     margin: 0 3px;
 }
 
 .movie-rating-vote-count{
-    font-size: .7em;
+    font-size: .65em;
     color: #dddddd;
 }
 

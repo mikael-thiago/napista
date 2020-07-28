@@ -14,7 +14,7 @@ const RecommendationItem = ({ recommendation }) => {
     const imageBaseUrl = getImageBaseUrl();
 
     const brightOnHover = () => {
-        cardBackgroundRef.current.style.filter = "brightness(.65)";
+        cardBackgroundRef.current.style.filter = "brightness(1)";
     }
 
     const unbrightOnHover = () => {
@@ -34,11 +34,13 @@ const RecommendationItem = ({ recommendation }) => {
                     <div className="recommendation-item-title">
                         {recommendation.title}
                     </div>
-                    <div className="recommendation-item-year-average">
+                    <div className="recommendation-item-year-rating">
                         <div className="recommendation-item-year">
                             {year}
                         </div>
-                        <div className="recommendation-item-average">
+                        <div className="recommendation-item-rating">
+                            <span className="glyphicon glyphicon-star recomendation-movie-rating-icon">
+                            </span>
                             {recommendation.vote_average + "/10"}
                         </div>
                     </div>

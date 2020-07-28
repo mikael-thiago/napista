@@ -37,9 +37,11 @@
     border: none;
     outline: none;
     font-size: 2.5em;
-    transition: .1s;
+    transition: .2s;
+    opacity: .7;
 }
 
 .carousel-controller:hover{
-    font-size: 3em;
+    font-size: 2.7em;
+    opacity: 1;
 }

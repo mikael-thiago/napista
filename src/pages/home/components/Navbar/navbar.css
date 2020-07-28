@@ -10,7 +10,7 @@
     transform: translateX(-100%);
     transition: .5s;
 
-    background-color: #353535;
+    background-color: inherit;
 
     z-index: 3;
 }

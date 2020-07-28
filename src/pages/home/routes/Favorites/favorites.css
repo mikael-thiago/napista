@@ -19,14 +19,18 @@
     display: none;
     justify-content: center;
     align-items: center;
-    font-size: 1em;
+    font-size: 1.2em;
     color: white;
     z-index: 2;
-    background-color: #282828;
+    background-color: transparent;
+}
+
+.unfavorite-movie-icon{
+    text-shadow: 2px 2px 3px black;
 }
 
 .unfavorite-movie-button:hover{
-    background-color: #383838;
+    font-size: 1.5em;
 }
 
 @media only screen{

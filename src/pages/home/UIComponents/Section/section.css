@@ -14,30 +14,18 @@
     font-size: 1.8em;
     color: white;
     font-weight: bold;
+    margin: 15px 0;
+    box-sizing: border-box;
+    padding: 0 35px;
 }
 
 .section-content-200{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    column-gap: 5px;
-    row-gap: 15px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     margin-bottom: 40px;
 }
 
 .scrollable{
     overflow-y: scroll;
-}
-
-@media screen and (max-width: 800px){
-    .section-content-200{
-        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-        
-    }
-}
-
-@media screen and (max-width: 450px){
-    .section-content-200{
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-        
-    }
 }

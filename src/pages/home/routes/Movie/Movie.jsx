@@ -49,6 +49,18 @@ const renderCastCarousel = (cast) => {
     )
 }
 
+const renderRecommendationsCarousel = (recommendations) => {
+    return (
+        recommendations.length !== 0 ? (
+            <Carousel title="Recomendações">
+                {recommendations.map((recommendation, index) => (
+                    <RecommendationItem key={index} recommendation={recommendation} />
+                ))}
+            </Carousel>
+        ) : <></>
+    )
+}
+
 const Movie = ({ match }) => {
     const movie_id = match.params.id;
 
@@ -59,6 +71,7 @@ const Movie = ({ match }) => {
         poster_path: "",
         release_date: "",
         budget: "",
+        popularity: "",
         production_countries: [],
         cast: [],
         videos: [],
@@ -121,17 +134,23 @@ const Movie = ({ match }) => {
                                 ))}
                             </div>
 
-                            <div className="separator"> • </div>
+                            {movieData.popularity !== "" ? (<>
+                                <div className="separator"> • </div>
 
-                            <div className="movie-popularity">
-                                {"Popularidade: " + movieData.popularity}
-                            </div>
+                                <div className="movie-popularity">
+                                    {"Popularidade: " + movieData.popularity}
+                                </div></>
+                            ) : <></>}
 
-                            <div className="separator"> • </div>
+                            {budget !== "" ? (
+                                <>
+                                    <div className="separator"> • </div>
 
-                            <div className="movie-budget">
-                                {"Orçamento: " + (mainProductionCountry.iso_3166_1 === "US" ? "U$ " : "R$ ") + budget.toLocaleString("pt-BR")}
-                            </div>
+                                    <div className="movie-budget">
+                                        {"Orçamento: " + (mainProductionCountry.iso_3166_1 === "US" ? "U$ " : "R$ ") + budget.toLocaleString("pt-BR")}
+                                    </div>
+                                </>
+                            ) : <></>}
 
                         </div>
                         <div className="movie-description">
@@ -161,12 +180,8 @@ const Movie = ({ match }) => {
 
                     {renderCastCarousel(movieData.cast)}
                     {renderTrailersCarousel(trailers)}
+                    {renderRecommendationsCarousel(movieData.recommendations)}
 
-                    <Carousel title="Recomendações">
-                        {movieData.recommendations.map((recommendation, index) => (
-                            <RecommendationItem key={index} recommendation={recommendation} />
-                        ))}
-                    </Carousel>
 
                     <div className="spacer" style={{ height: "50px", minHeight: "50px" }}>
 

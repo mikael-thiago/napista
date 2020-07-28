@@ -1,6 +1,6 @@
 .topbar{
     grid-area: topbar;
-    background-color: #333333;
+    background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: space-between;

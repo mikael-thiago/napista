@@ -16,7 +16,7 @@ const FavoriteMovieCard = ({ movie, imageBaseUrl, unfavoriteFunction }) => {
     const unfavoriteButtonRef = useRef();
     const cardBackgroundRef = useRef();
 
-    const posterUrl = movie.poster_path ? imageBaseUrl + "w342/" + movie.poster_path : "";
+    const posterUrl = movie.poster_path ? imageBaseUrl + "w342" + movie.poster_path : "";
 
     const showUnfavoriteButton = () => {
         unfavoriteButtonRef.current.style.display = "flex";
@@ -27,7 +27,7 @@ const FavoriteMovieCard = ({ movie, imageBaseUrl, unfavoriteFunction }) => {
     }
 
     const brightOnHover = () => {
-        cardBackgroundRef.current.style.filter = "brightness(.6)";
+        cardBackgroundRef.current.style.filter = "brightness(1)";
     }
 
     const unbrightOnLeave = () => {
@@ -35,10 +35,9 @@ const FavoriteMovieCard = ({ movie, imageBaseUrl, unfavoriteFunction }) => {
     }
 
     return (
-        <Link to={"/movie/" + movie.id} className="movie-card" onMouseEnter={brightOnHover} onMouseLeave={unbrightOnLeave}>
-            <div className="movie-card-content" onMouseEnter={showUnfavoriteButton} onMouseLeave={hideUnfavoriteButton}>
-                <div className="movie-card-background" ref={cardBackgroundRef}>
-                    <img src={posterUrl} alt="" />
+        <div className="movie-card" onMouseEnter={brightOnHover} onMouseLeave={unbrightOnLeave}>
+            <Link to={"/movie/" + movie.id} className="movie-card-content" onMouseEnter={showUnfavoriteButton} onMouseLeave={hideUnfavoriteButton}>
+                <div className="movie-card-background" ref={cardBackgroundRef} style={{ backgroundImage: "url('" + posterUrl + "')" }}>
                 </div>
                 <div className="movie-card-text-wrapper">
                     <div className="movie-card-text">
@@ -46,13 +45,13 @@ const FavoriteMovieCard = ({ movie, imageBaseUrl, unfavoriteFunction }) => {
                     </div>
 
                 </div>
-            </div>
+            </Link>
 
             <button className="unfavorite-movie-button" onMouseEnter={showUnfavoriteButton} onClick={() => unfavoriteFunction(movie.id)} onMouseLeave={hideUnfavoriteButton} ref={unfavoriteButtonRef}>
                 <span className="unfavorite-movie-icon glyphicon glyphicon-remove"></span>
             </button>
 
-        </Link>
+        </div>
     );
 
 }

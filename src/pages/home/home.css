@@ -12,11 +12,11 @@ body{
     display: grid;
     grid-template-areas: "topbar" "main-view";
     grid-template-rows: 60px calc(100vh - 60px);
+    background-color: #181818;
 }
 
 .main-view{
     grid-area: main-view;
-    background-color: #181818;
     width: 100%;
     height: 100%;
     overflow-y: hidden;
