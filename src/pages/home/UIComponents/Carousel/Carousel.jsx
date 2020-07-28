@@ -8,7 +8,19 @@ const Carousel = ({ itemWidth = 100, title = "", children }) => {
     const contentRef = useRef(null);
     const [isOverflowed, setIsOverflowed] = useState(false);
 
-    const carouselWidth = (contentRef.current ? contentRef.current.clientWidth : 200);
+    var scrollWidth = 0;
+
+    if (contentRef.current) {
+        const item = contentRef.current.children.item(0);
+
+        if (item) {
+            const computedStyle = getComputedStyle(item);
+            const itemSize = parseInt(computedStyle.width) + parseInt(computedStyle.marginLeft) + parseInt(computedStyle.marginRight)
+
+            scrollWidth = itemSize * parseInt(contentRef.current.clientWidth / itemSize);
+        }
+
+    }
 
     useEffect(() => {
 
@@ -23,7 +35,7 @@ const Carousel = ({ itemWidth = 100, title = "", children }) => {
                     {title}
                 </div>
             </div>
-            <button className="carousel-controller" onClick={() => { contentRef.current.scrollLeft -= carouselWidth }} style={{ position: "absolute", left: "0", zIndex: 2, display: (isOverflowed ? "" : "none") }}>
+            <button className="carousel-controller" onClick={() => { contentRef.current.scrollLeft -= scrollWidth }} style={{ position: "absolute", left: "0", zIndex: 2, display: (isOverflowed ? "" : "none") }}>
                 <span className="glyphicon glyphicon-chevron-left"></span>
             </button>
 
@@ -31,7 +43,7 @@ const Carousel = ({ itemWidth = 100, title = "", children }) => {
                 {children}
             </div>
 
-            <button className="carousel-controller" onClick={() => { contentRef.current.scrollLeft += carouselWidth }} style={{ position: "absolute", right: "0", zIndex: 2, display: (isOverflowed ? "" : "none") }}>
+            <button className="carousel-controller" onClick={() => { contentRef.current.scrollLeft += scrollWidth }} style={{ position: "absolute", right: "0", zIndex: 2, display: (isOverflowed ? "" : "none") }}>
                 <span className="glyphicon glyphicon-chevron-right"></span>
             </button>
         </section>
