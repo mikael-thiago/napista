@@ -52,16 +52,47 @@ const FavoriteMovieCard = ({ movie, imageBaseUrl, unfavoriteFunction }) => {
 const FavoritesPage = () => {
     const [movieData, setMovieData] = useState(null);
 
+    const wrapperRef = useRef();
 
     useEffect(() => {
         getFavoritedMovies().then((favoritedMovies) => {
             setMovieData(favoritedMovies);
+
+            let loader = document.getElementsByClassName("loader")[0];
+            loader.style.zIndex = 0;
+            loader.style.display = "none";
+
         })
     }, []);
 
+    const addLoadingEffect = () => {
+        let loader = document.getElementsByClassName("loader")[0];
+
+        loader.style.zIndex = 5;
+        loader.style.display = "block";
+
+        wrapperRef.current.style.filter = "brightness(.5)";
+
+    }
+
+    const removeLoadingEffect = () => {
+        let loader = document.getElementsByClassName("loader")[0];
+
+        wrapperRef.current.style.filter = "";
+
+        loader.style.zIndex = 0;
+        loader.style.display = "none";
+    }
+
     const handleUnfavoriteMovie = (movie_id) => {
+
+        addLoadingEffect();
+
         unfavoriteMovie(movie_id).then((response) => {
             getFavoritedMovies().then((favoritedMovies) => {
+
+                removeLoadingEffect();
+
                 setMovieData(favoritedMovies);
             });
         })
@@ -69,15 +100,18 @@ const FavoritesPage = () => {
 
     return (
         movieData ? (
-            <div className="favorites-wrapper" >
-                <Section>
-                    {movieData.map((movie, index) => (
-                        <FavoriteMovieCard unfavoriteFunction={handleUnfavoriteMovie} key={index} movie={movie} imageBaseUrl={getImageBaseUrl()} />
-                    )
-                    )}
-                </Section>
+            <>
+                <Loader />
+                <div ref={wrapperRef} className="favorites-wrapper" >
+                    <Section>
+                        {movieData.map((movie, index) => (
+                            <FavoriteMovieCard unfavoriteFunction={handleUnfavoriteMovie} key={index} movie={movie} imageBaseUrl={getImageBaseUrl()} />
+                        )
+                        )}
+                    </Section>
 
-            </div >
+                </div >
+            </>
         ) : <Loader />
     )
 }

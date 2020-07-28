@@ -1,9 +1,9 @@
 import React from "react";
 import "./loader.css";
 
-const Loader = () => {
+const Loader = ({ ref }) => {
     return (
-        <div className="loader"></div>
+        <div ref={ref} className="loader"></div>
     )
 }
 
