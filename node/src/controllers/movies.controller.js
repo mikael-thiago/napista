@@ -110,7 +110,7 @@ const getMovie = async (req, res) => {
     const movieReponse = await requestPromise(MOVIES_URL + querystring.stringify({
         api_key: API_KEY,
         language: language,
-        append_to_response: "videos,credits"
+        append_to_response: "videos,credits,recommendations"
     }), { json: true });
 
     result = movieReponse.body;
@@ -119,7 +119,8 @@ const getMovie = async (req, res) => {
     result.videos = result.videos.results;
 
     result.credits = undefined;
-    result.videos.results = undefined;
+
+    result.recommendations = result.recommendations.results;
 
     const connection = createConnection();
 
