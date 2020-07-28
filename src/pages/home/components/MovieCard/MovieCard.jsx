@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 
 //Functions
 import { favoriteMovie, unfavoriteMovie, isFavorite } from "../../../../api-calls/api-calls";
