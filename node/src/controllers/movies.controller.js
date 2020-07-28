@@ -109,25 +109,24 @@ const getMovie = async (req, res) => {
 
     const movieReponse = await requestPromise(MOVIES_URL + querystring.stringify({
         api_key: API_KEY,
-        language: language
+        language: language,
+        append_to_response: "videos,credits"
     }), { json: true });
 
-    result = movieReponse.body
+    result = movieReponse.body;
 
-    const CREDITS_URL = API_BASE_URL + "movie/" + movie_id + "/credits?";
+    result.cast = result.credits.cast;
+    result.videos = result.videos.results;
 
-    const creditsResponse = await requestPromise(CREDITS_URL + querystring.stringify({
-        api_key: API_KEY,
-        language: language
-    }), { json: true });
-
-    result.cast = creditsResponse.body.cast;
+    result.credits = undefined;
+    result.videos.results = undefined;
 
     const connection = createConnection();
 
     try {
 
         let query = "SELECT * FROM favoritos WHERE movie_id=" + result.id;
+
         const queryResult = await connection.query(query);
 
         if (queryResult.length === 0)
