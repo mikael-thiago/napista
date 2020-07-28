@@ -171,11 +171,15 @@ const Movie = ({ match }) => {
                                     </div>
                                 ) : <></>}
 
-                                <div className="separator"> • </div>
+                                {movieData.runtime ? (
+                                    <>
+                                        <div className="separator"> • </div>
 
-                                <div className="movie-duration">
-                                    {(durationTime.hours > 0 ? durationTime.hours + "h" : "") + durationTime.minutes + "min"}
-                                </div>
+                                        <div className="movie-duration">
+                                            {(durationTime.hours > 0 ? durationTime.hours + "h" : "") + durationTime.minutes + "min"}
+                                        </div>
+                                    </>
+                                ) : <></>}
 
                                 {release_date ? (
                                     <>
@@ -222,15 +226,19 @@ const Movie = ({ match }) => {
                                 ) : <></>}
                             </div>
 
-                            <div className="movie-details">
-                                <div className="movie-status">
-                                    {"Status: " + (movieData.status === "Planned" ? "Em planejamento" : "Lançado")}
+                            {movieData.status ? (
+                                <div className="movie-details">
+                                    <div className="movie-status">
+                                        {"Status: " + (movieData.status === "Planned" ? "Em planejamento" : "Lançado")}
+                                    </div>
                                 </div>
-                            </div>
+                            ) : <></>}
 
-                            <div className="movie-description">
-                                {movieData.overview}
-                            </div>
+                            {movieData.overview ? (
+                                <div className="movie-description">
+                                    {movieData.overview}
+                                </div>
+                            ) : <></>}
 
                             <div className="movie-rating">
                                 <div className="movie-rating-container">
