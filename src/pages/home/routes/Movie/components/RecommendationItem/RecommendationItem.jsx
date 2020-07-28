@@ -7,7 +7,7 @@ const RecommendationItem = ({ recommendation }) => {
 
     const cardBackgroundRef = useRef();
 
-    const releaseDate = recommendation.releaseDate ? recommendation.release_date.split("-") : [];
+    const releaseDate = recommendation.release_date ? recommendation.release_date.split("-") : [];
 
     const year = releaseDate ? releaseDate[0] : "";
 

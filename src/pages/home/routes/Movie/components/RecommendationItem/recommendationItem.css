@@ -34,11 +34,9 @@
 .recomendation-movie-rating-icon{
     color: yellow;
     font-size: 1em;
+    margin: 0 5px;
 }
 
-.recommendation-item-rating{
-    margin: 0px 10px;
-}
 .recommendation-item-text-wrapper{
     width: 90%;
 }
@@ -55,9 +53,10 @@
     color: #dddddd;
 }
 
-.recommendation-item-year-rating *{
+.recommendation-item-year-rating  > *{
     margin-right: 10px;
 }
+
 
 @media screen and (max-width: 800px){
     .recommendation-item{

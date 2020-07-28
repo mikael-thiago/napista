@@ -19,14 +19,12 @@ const Navbar = () => {
                         <li className="navbar-item">
                             <Link className="navbar-link" to="">
                                 <span className="navbar-item-icon glyphicon glyphicon-home"></span>
-                                <div className="navbar-item-text">Início</div>
                             </Link>
                         </li>
 
                         <li className="navbar-item">
                             <Link className="navbar-link" to="/favorites">
                                 <span className="navbar-item-icon glyphicon glyphicon-heart"></span>
-                                <div className="navbar-item-text">Favoritos</div>
                             </Link>
                         </li>
 
