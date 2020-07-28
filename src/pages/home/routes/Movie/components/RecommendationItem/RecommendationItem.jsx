@@ -7,9 +7,9 @@ const RecommendationItem = ({ recommendation }) => {
 
     const cardBackgroundRef = useRef();
 
-    const releaseDate = recommendation.release_date.split("-");
+    const releaseDate = recommendation.releaseDate ? recommendation.release_date.split("-") : [];
 
-    const year = releaseDate[0];
+    const year = releaseDate ? releaseDate[0] : "";
 
     const imageBaseUrl = getImageBaseUrl();
 

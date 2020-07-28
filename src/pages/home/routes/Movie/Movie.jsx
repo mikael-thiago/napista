@@ -120,7 +120,7 @@ const Movie = ({ match }) => {
             movie.loaded = true;
             movie.favorite = isFavorite(movie.id);
 
-            console.log(movie.favorite);
+            console.log(movie.status);
             setMovieData(movie);
 
         })
@@ -163,7 +163,7 @@ const Movie = ({ match }) => {
                                 {movieData.tagline}
                             </div>
 
-                            <div className="movie-genres-release-popularity">
+                            <div className="movie-details">
 
                                 <div className="movie-genres">
                                     {"Gêneros:" + movieData.genres.map((genre, index) => ((index === movieData.genres.length - 1) ? " " + genre.name : " " + genre.name))
@@ -178,11 +178,13 @@ const Movie = ({ match }) => {
 
                                 <div className="separator"> • </div>
 
-                                <div className="movie-release">
-                                    {release_date.split("-").reverse().map((datePart, index) => (
-                                        (index === release_date.split("-").length - 1) ? datePart : datePart + "/"
-                                    ))}
-                                </div>
+                                {release_date ? (
+                                    <div className="movie-release">
+                                        {release_date.split("-").reverse().map((datePart, index) => (
+                                            (index === release_date.split("-").length - 1) ? datePart : datePart + "/"
+                                        ))}
+                                    </div>
+                                ) : <></>}
 
                                 {movieData.popularity !== "" ? (<>
                                     <div className="separator"> • </div>
@@ -194,10 +196,9 @@ const Movie = ({ match }) => {
 
                             </div>
 
-                            <div className="movie-budget-revenue">
+                            <div className="movie-details">
                                 {budget !== "" ? (
                                     <>
-
                                         <div className="movie-budget">
                                             {"Orçamento: " + (mainProductionCountry.iso_3166_1 === "US" ? "U$ " : "R$ ") + budget.toLocaleString("pt-BR")}
                                         </div>
@@ -213,6 +214,10 @@ const Movie = ({ match }) => {
                                         </div>
                                     </>
                                 ) : <></>}
+                            </div>
+                            <div className="movie-details">
+
+                                {"Status: " + (movieData.status === "Planned" ? "Em planejamento" : "Lançado")}
                             </div>
                             <div className="movie-description">
                                 {movieData.overview}

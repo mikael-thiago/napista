@@ -54,14 +54,7 @@
     font-size: 1.1em;
 }
 
-.movie-genres-release-popularity{
-    font-size: 1.1em;
-    margin: 10px 0;
-    display: flex;
-    align-items: center;
-}
-
-.movie-budget-revenue{
+.movie-details{
     font-size: 1.1em;
     margin: 10px 0;
     display: flex;

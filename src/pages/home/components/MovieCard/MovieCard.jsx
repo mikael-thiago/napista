@@ -33,8 +33,6 @@ const MovieCard = ({ movie, imageBaseUrl }) => {
 
     const [favorite, setFavorite] = useState(isFavorite(movie.id));
 
-    console.log(movie.title + " " + favorite);
-
     const posterUrl = movie.poster_path ? imageBaseUrl + "w500/" + movie.poster_path : "";
 
     const showFavoriteButton = () => {
