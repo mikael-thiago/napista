@@ -13,6 +13,7 @@ import Carousel from "../../UIComponents/Carousel/Carousel";
 //Styles
 import "./movie.css";
 import VideoItem from "./components/VideoItem/VideoItem";
+import RecommendationItem from "./components/RecommendationItem/RecommendationItem";
 
 const parseDuratinTime = (min) => {
     let hours = parseInt(min / 60), minutes = min % 60;
@@ -23,11 +24,13 @@ const parseDuratinTime = (min) => {
 
 const renderTrailersCarousel = (trailers) => {
     return (
-        trailers !== [] ? (<Carousel title="Trailers" >
-            {trailers.map((trailer, index) => (
-                <VideoItem key={index} video={trailer} />
-            ))}
-        </Carousel>) : <></>
+        trailers.length !== 0 ? (
+            <Carousel itemWidth={250} title="Trailers" >
+                {trailers.map((trailer, index) => (
+                    <VideoItem key={index} video={trailer} />
+                ))}
+            </Carousel>
+        ) : <></>
     )
 }
 
@@ -36,7 +39,7 @@ const renderCastCarousel = (cast) => {
     const itemWidth = window.innerWidth <= 450 ? 70 : (window.innerWidth <= 800 ? 85 : 100);
 
     return (
-        cast !== [] ? (
+        cast.length !== 0 ? (
             <Carousel title="Elenco" itemWidth={itemWidth}>
                 {cast.map((cast_p, index) => (
                     <CastItem cast={cast_p} key={index} />
@@ -58,6 +61,7 @@ const Movie = ({ match }) => {
         release_date: "",
         cast: [],
         videos: [],
+        recommendations: [],
         runtime: 0
     });
 
@@ -72,7 +76,7 @@ const Movie = ({ match }) => {
         getMovie(movie_id).then((movie) => {
             setMovieData(movie);
         })
-    }, []);
+    }, [movie_id]);
 
     return (
         <>
@@ -140,6 +144,12 @@ const Movie = ({ match }) => {
 
                     {renderCastCarousel(movieData.cast)}
                     {renderTrailersCarousel(trailers)}
+
+                    <Carousel title="Recomendações">
+                        {movieData.recommendations.map((recommendation, index) => (
+                            <RecommendationItem key={index} recommendation={recommendation} />
+                        ))}
+                    </Carousel>
 
                     <div className="spacer" style={{ height: "50px", minHeight: "50px" }}>
 
