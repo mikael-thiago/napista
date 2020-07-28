@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 
 //Function
-import { getMovie, unfavoriteMovie, favoriteMovie } from "../../../../api-calls/api-calls";
+import { getMovie, unfavoriteMovie, favoriteMovie, isFavorite } from "../../../../api-calls/api-calls";
 import { getImageBaseUrl } from "../../../../services/api_config";
 
 
@@ -79,14 +79,15 @@ const Movie = ({ match }) => {
         recommendations: [],
         genres: [],
         runtime: 0,
-        loaded: false
+        loaded: false,
+        favorite: false
     });
-
-    const [favorited, setFavorited] = useState(movieData.favorite);
 
     const release_date = movieData.release_date || "";
     const back_image_url = movieData.backdrop_path || movieData.poster_path || "";
     const budget = movieData.budget || "";
+
+    const favorite = movieData.favorite;
 
     const mainProductionCountry = movieData.production_countries[0] || "";
 
@@ -94,24 +95,35 @@ const Movie = ({ match }) => {
 
     const durationTime = parseDuratinTime(movieData.runtime);
 
+    console.log(isFavorite(movieData.id));
+
     useEffect(() => {
         getMovie(movie_id).then((movie) => {
             movie.loaded = true;
+            movie.favorite = isFavorite(movie.id);
+
+            console.log(movie.favorite);
             setMovieData(movie);
-            setFavorited(movie.favorite);
+
         })
     }, [movie_id]);
 
     const handleFavoriteMovie = () => {
-        favoriteMovie(movieData.id).then((response) => {
-            setFavorited(true);
-        });
+        favoriteMovie(movieData.id);
+
+        let { ...movie } = movieData;
+        movie.favorite = true;
+
+        setMovieData(movie);
     }
 
     const handleUnfavoriteMovie = () => {
-        unfavoriteMovie(movieData.id).then((response) => {
-            setFavorited(false);
-        });
+        unfavoriteMovie(movieData.id);
+
+        let { ...movie } = movieData;
+        movie.favorite = false;
+
+        setMovieData(movie);
     }
 
     return (
@@ -192,8 +204,8 @@ const Movie = ({ match }) => {
                         </div>
 
 
-                        <button className="favorite-button" onClick={favorited ? handleUnfavoriteMovie : handleFavoriteMovie}>
-                            <span className={"fa " + (favorited ? "fa-heart favorited" : "fa fa-heart-o unfavorited")} />
+                        <button className="favorite-button" onClick={favorite ? handleUnfavoriteMovie : handleFavoriteMovie}>
+                            <span className={"fa " + (favorite ? "fa-heart favorited" : "fa fa-heart-o unfavorited")} />
                         </button>
 
                     </div>

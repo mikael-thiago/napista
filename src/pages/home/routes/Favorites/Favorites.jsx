@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 //Functions
 import { getImageBaseUrl } from "../../../../services/api_config";
-import { getFavoritedMovies, unfavoriteMovie } from "../../../../api-calls/api-calls";
+import { getFavoritedMovies, unfavoriteMovie, getMovie } from "../../../../api-calls/api-calls";
 
 //Components
 import { Link } from "react-router-dom";
@@ -58,11 +58,9 @@ const FavoritesPage = () => {
         getFavoritedMovies().then((favoritedMovies) => {
             setMovieData(favoritedMovies);
 
-            let loader = document.getElementsByClassName("loader")[0];
-            loader.style.zIndex = 0;
-            loader.style.display = "none";
-
+            removeLoadingEffect();
         })
+
     }, []);
 
     const addLoadingEffect = () => {
@@ -88,13 +86,11 @@ const FavoritesPage = () => {
 
         addLoadingEffect();
 
-        unfavoriteMovie(movie_id).then((response) => {
-            getFavoritedMovies().then((favoritedMovies) => {
+        unfavoriteMovie(movie_id);
+        getFavoritedMovies().then((favoritedMovies) => {
+            removeLoadingEffect();
 
-                removeLoadingEffect();
-
-                setMovieData(favoritedMovies);
-            });
+            setMovieData(favoritedMovies);
         })
     }
 

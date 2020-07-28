@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 
 //Functions
-import { favoriteMovie, unfavoriteMovie } from "../../../../api-calls/api-calls";
+import { favoriteMovie, unfavoriteMovie, isFavorite } from "../../../../api-calls/api-calls";
 
 //Components
 import { Link } from "react-router-dom";
@@ -26,13 +26,12 @@ function detectMob() {
 
 }
 
-
 const MovieCard = ({ movie, imageBaseUrl }) => {
 
     const favoriteButtonRef = useRef();
     const cardBackgroundRef = useRef();
 
-    const [favorite, setFavorite] = useState(movie.favorite);
+    const [favorite, setFavorite] = useState(isFavorite(movie.id));
 
     const posterUrl = movie.poster_path ? imageBaseUrl + "w500/" + movie.poster_path : "";
 
@@ -46,15 +45,15 @@ const MovieCard = ({ movie, imageBaseUrl }) => {
     }
 
     const handleFavoriteMovie = () => {
-        favoriteMovie(movie.id).then((response) => {
-            setFavorite(true);
-        });
+        favoriteMovie(movie.id);
+
+        setFavorite(true);
     }
 
     const handleUnfavoriteMovie = () => {
-        unfavoriteMovie(movie.id).then((response) => {
-            setFavorite(false);
-        });
+        unfavoriteMovie(movie.id);
+
+        setFavorite(false);
     }
 
     const brightOnHover = () => {

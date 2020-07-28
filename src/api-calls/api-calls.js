@@ -1,11 +1,13 @@
 import axios from "axios";
+import { getAPIKey, getBaseUrl } from "../services/api_config";
 
-const BASE_URL = "http://localhost:4000/";
+const API_KEY = getAPIKey();
+const BASE_URL = getBaseUrl();
 
 //Movies calls
 const getMostPopularMovies = async (page) => {
 
-    const URL = BASE_URL + "movie/popular?page=" + page + "&language=pt-BR";
+    const URL = BASE_URL + "movie/popular?api_key=" + API_KEY + "&page=" + page + "&language=pt-BR";
 
     const result = (await axios.get(URL));
 
@@ -14,42 +16,63 @@ const getMostPopularMovies = async (page) => {
 
 const getMovie = async (movie_id) => {
 
-    const MOVIE_URL = BASE_URL + "movie/" + movie_id + "?language=pt-BR";
+    const MOVIE_URL = BASE_URL + "movie/" + movie_id + "?api_key=" + API_KEY + "&language=pt-BR&append_to_response=videos,credits,recommendations";
 
     let movieResult = (await axios.get(MOVIE_URL));
+
+    movieResult.data.cast = movieResult.data.credits.cast;
+
+    movieResult.data.recommendations = movieResult.data.recommendations.results;
+
+    movieResult.data.videos = movieResult.data.videos.results;
 
     return movieResult.data;
 }
 
 const getFavoritedMovies = async () => {
-    const FAVORITED_MOVIES_URL = BASE_URL + "movie/favoriteds?language=pt-BR";
+    let favoritedMovies = [];
 
-    const result = (await axios.get(FAVORITED_MOVIES_URL));
+    for (var i = 0; i < localStorage.length; i++) {
 
-    return result.data;
+        let key = localStorage.key(i);
+
+
+        if (localStorage.getItem(key) === "true") {
+            var favoritedMovie;
+
+            favoritedMovie = await getMovie(key);
+
+            favoritedMovies.push(favoritedMovie);
+        }
+    }
+
+    return favoritedMovies;
 }
 
-const favoriteMovie = async (movie_id) => {
-    const FAVORITE_URL = BASE_URL + "movie/favorite/" + movie_id;
-
-    const result = (await axios.post(FAVORITE_URL));
+const favoriteMovie = (movie_id) => {
+    localStorage.setItem(movie_id, true);
 
 }
 
-const unfavoriteMovie = async (movie_id) => {
-    const UNFAVORITE_URL = BASE_URL + "movie/unfavorite/" + movie_id;
+const unfavoriteMovie = (movie_id) => {
 
-    const result = (await axios.delete(UNFAVORITE_URL));
+    localStorage.setItem(movie_id, false);
+}
+
+const isFavorite = (movie_id) => {
+    return (localStorage.getItem(movie_id) === "true");
 }
 
 //Search calls
 const getSearchResult = async (query, page) => {
 
-    const SEARCH_URL = BASE_URL + "search/movie?query=" + query + "&page=" + page + "&language=pt-BR";
+    const SEARCH_URL = BASE_URL + "search/movie?api_key=" + API_KEY + "&query=" + query + "&page=" + page + "&language=pt-BR";
+
+    console.log(SEARCH_URL);
 
     let searchResult = (await axios.get(SEARCH_URL));
 
     return searchResult.data;
 }
 
-export { getMostPopularMovies, getMovie, favoriteMovie, unfavoriteMovie, getSearchResult, getFavoritedMovies };
+export { getMostPopularMovies, getMovie, favoriteMovie, unfavoriteMovie, getSearchResult, getFavoritedMovies, isFavorite };
