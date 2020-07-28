@@ -14,7 +14,7 @@ const VideoItem = ({ video }) => {
 
     return (
         <div className="video-item">
-            <iframe width="100%" height="100%" src={src}
+            <iframe title={video.name} width="100%" height="100%" src={src}
                 frameBorder="0"
                 allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" >
             </iframe>
