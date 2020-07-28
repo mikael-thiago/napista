@@ -171,10 +171,6 @@ const Movie = ({ match }) => {
                                     </>
                                 ) : <></>}
 
-                                <button className="favorite-button" onClick={favorited ? handleUnfavoriteMovie : handleFavoriteMovie}>
-                                    <span className={"fa " + (favorited ? "fa-heart favorited" : "fa fa-heart-o unfavorited")} />
-                                </button>
-
                             </div>
                             <div className="movie-description">
                                 {movieData.overview}
@@ -195,6 +191,10 @@ const Movie = ({ match }) => {
                             </div>
                         </div>
 
+
+                        <button className="favorite-button" onClick={favorited ? handleUnfavoriteMovie : handleFavoriteMovie}>
+                            <span className={"fa " + (favorited ? "fa-heart favorited" : "fa fa-heart-o unfavorited")} />
+                        </button>
 
                     </div>
 

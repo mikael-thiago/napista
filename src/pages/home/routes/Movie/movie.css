@@ -11,6 +11,18 @@
     top: 0px;
 }
 
+.movie-wrapper{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    overflow-y: scroll;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 0px;
+}
+
 .movie-info-banner{
     height: 600px;
     min-height: 600px;
@@ -24,16 +36,9 @@
     text-shadow: 2px 2px 3px black;
 }
 
-.movie-wrapper{
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    overflow-y: scroll;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    top: 0px;
+.movie-info{
+    box-sizing: border-box;
+    width: 95%;
 }
 
 .movie-title{
@@ -44,9 +49,8 @@
     white-space: wrap;
 }
 
-.movie-description{
+.movie-tagline{
     font-size: 1.1em;
-    margin: 10px 0;
 }
 
 .movie-genres-release-popularity-budget{
@@ -56,45 +60,10 @@
     align-items: center;
 }
 
-.movie-tagline{
+.movie-description{
     font-size: 1.1em;
+    margin: 10px 0;
 }
-
-.separator{
-    white-space: pre-wrap;
-}
-
-.favorite-button{
-    border: none;
-    outline: none;
-    background-color: transparent;
-    position: absolute;
-    bottom: 30px;
-    right: 80px;
-    font-size: 3em;
-}
-
-.favorited {
-    color: #d20202;;
-}
-
-.movie-info{
-    box-sizing: border-box;
-    width: 95%;
-}
-
-.movie-info-body{
-    box-sizing: border-box;
-    padding: 25px 10px;
-    width: 100%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #080808;
-    clear: initial;
-}
-
 
 .movie-rating{
     height: 50px;
@@ -127,6 +96,35 @@
     color: #dddddd;
 }
 
+.separator{
+    white-space: pre-wrap;
+}
+
+.favorite-button{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    position: absolute;
+    bottom: 30px;
+    right: 80px;
+    font-size: 3em;
+}
+
+.favorited {
+    color: #d20202;;
+}
+
+.movie-info-body{
+    box-sizing: border-box;
+    padding: 25px 10px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #080808;
+    clear: initial;
+}
 
 @media screen and (max-width: 450px){
     .movie-banner{
