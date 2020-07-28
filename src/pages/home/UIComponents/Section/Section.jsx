@@ -3,17 +3,19 @@ import React from "react";
 //Styles
 import "./section.css";
 
-const Section = ({ children, title, itemWidth = 200, scrollable = false, maxHeight = "" }) => {
+const Section = ({ children, title, aditional = "", maxHeight = "" }) => {
 
-    const scrollableClass = scrollable ? " scrollable" : "";
     return (
         <section className="section">
             <span className="section-span">
                 <div className="section-title">
                     {title}
                 </div>
+                <div className="section-aditional">
+                    {aditional}
+                </div>
             </span>
-            <div className={"section-content-" + itemWidth + scrollableClass} style={{ maxHeight: maxHeight }}>
+            <div className={"section-content"} style={{ maxHeight: maxHeight }}>
                 {children}
             </div>
         </section>

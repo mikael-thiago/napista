@@ -10,6 +10,7 @@ import Section from "../../UIComponents/Section/Section";
 
 //Styles
 import "./favorites.css";
+import Loader from "../../UIComponents/Loader/Loader";
 
 const FavoriteMovieCard = ({ movie, imageBaseUrl, unfavoriteFunction }) => {
 
@@ -17,14 +18,6 @@ const FavoriteMovieCard = ({ movie, imageBaseUrl, unfavoriteFunction }) => {
     const cardBackgroundRef = useRef();
 
     const posterUrl = movie.poster_path ? imageBaseUrl + "w342" + movie.poster_path : "";
-
-    const showUnfavoriteButton = () => {
-        unfavoriteButtonRef.current.style.display = "flex";
-    }
-
-    const hideUnfavoriteButton = () => {
-        unfavoriteButtonRef.current.style.display = "";
-    }
 
     const brightOnHover = () => {
         cardBackgroundRef.current.style.filter = "brightness(1)";
@@ -36,7 +29,7 @@ const FavoriteMovieCard = ({ movie, imageBaseUrl, unfavoriteFunction }) => {
 
     return (
         <div className="movie-card" onMouseEnter={brightOnHover} onMouseLeave={unbrightOnLeave}>
-            <Link to={"/movie/" + movie.id} className="movie-card-content" onMouseEnter={showUnfavoriteButton} onMouseLeave={hideUnfavoriteButton}>
+            <Link to={"/movie/" + movie.id} className="movie-card-content">
                 <div className="movie-card-background" ref={cardBackgroundRef} style={{ backgroundImage: "url('" + posterUrl + "')" }}>
                 </div>
                 <div className="movie-card-text-wrapper">
@@ -47,8 +40,8 @@ const FavoriteMovieCard = ({ movie, imageBaseUrl, unfavoriteFunction }) => {
                 </div>
             </Link>
 
-            <button className="unfavorite-movie-button" onMouseEnter={showUnfavoriteButton} onClick={() => unfavoriteFunction(movie.id)} onMouseLeave={hideUnfavoriteButton} ref={unfavoriteButtonRef}>
-                <span className="unfavorite-movie-icon glyphicon glyphicon-remove"></span>
+            <button className="unfavorite-movie-button" onMouseEnter={brightOnHover} onMouseLeave={unbrightOnLeave} onClick={() => unfavoriteFunction(movie.id)} ref={unfavoriteButtonRef}>
+                <span className="unfavorite-movie-icon fa fa-times"></span>
             </button>
 
         </div>
@@ -57,7 +50,7 @@ const FavoriteMovieCard = ({ movie, imageBaseUrl, unfavoriteFunction }) => {
 }
 
 const FavoritesPage = () => {
-    const [movieData, setMovieData] = useState([]);
+    const [movieData, setMovieData] = useState(null);
 
 
     useEffect(() => {
@@ -75,15 +68,17 @@ const FavoritesPage = () => {
     }
 
     return (
-        <div className="favorites-wrapper">
-            <Section>
-                {movieData.map((movie, index) => (
-                    <FavoriteMovieCard unfavoriteFunction={handleUnfavoriteMovie} key={index} movie={movie} imageBaseUrl={getImageBaseUrl()} />
-                )
-                )}
-            </Section>
+        movieData ? (
+            <div className="favorites-wrapper" >
+                <Section>
+                    {movieData.map((movie, index) => (
+                        <FavoriteMovieCard unfavoriteFunction={handleUnfavoriteMovie} key={index} movie={movie} imageBaseUrl={getImageBaseUrl()} />
+                    )
+                    )}
+                </Section>
 
-        </div>
+            </div >
+        ) : <Loader />
     )
 }
 

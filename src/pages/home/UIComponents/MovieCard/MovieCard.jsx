@@ -79,7 +79,7 @@ const MovieCard = ({ movie, imageBaseUrl }) => {
             </Link>
 
             <button style={{ display: (detectMob() ? "flex" : "none") }} className={"favorite-movie-button " + (favorite ? "unfavorite" : "favorite")} onMouseEnter={showFavoriteButton} onMouseLeave={hideFavoriteButton} onClick={favorite ? handleUnfavoriteMovie : handleFavoriteMovie} ref={favoriteButtonRef}>
-                <span className={"favorite-movie-icon " + (favorite ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-heart")}></span>
+                <span className={"favorite-movie-icon " + (favorite ? "fa fa-minus" : "fa fa-heart")}></span>
             </button>
 
         </div>

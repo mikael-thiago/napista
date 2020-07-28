@@ -24,7 +24,7 @@ const SearchInput = withRouter(({ history, match }) => {
 
     return (
         <div className="search-input-wrapper">
-            <span className="search-input-icon glyphicon glyphicon-search"></span>
+            <span className="search-input-icon fa fa-search"></span>
 
             <input type="text" ref={inputRef} value={query} onChange={handleInputChange} placeholder="Busque aqui seus filmes" className="search-input">
             </input>
@@ -47,7 +47,7 @@ const NavbarButton = () => {
 
     return (
         <button onClick={toggleNavbar} className="navbar-button">
-            <span className="glyphicon glyphicon-menu-hamburger"></span>
+            <span className="fa fa-bars"></span>
         </button>
     )
 }

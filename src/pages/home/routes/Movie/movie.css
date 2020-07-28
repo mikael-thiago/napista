@@ -64,6 +64,20 @@
     white-space: pre-wrap;
 }
 
+.favorite-button{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    position: absolute;
+    bottom: 30px;
+    right: 80px;
+    font-size: 3em;
+}
+
+.favorited {
+    color: #d20202;;
+}
+
 .movie-info{
     box-sizing: border-box;
     width: 95%;

@@ -20,10 +20,6 @@ Acesse o arquivo "node/src/database/databaseConfig.json" e coloque as credenciai
 * Usuário
 * Senha
 
-## Acesso a API
-
-Adiquira uma API_KEY e em seguida acesse o arquivo "node/src/api_config/api_config.js" e a atribua como valor para o campo "API_KEY".
-
 # Execução
 
 * Abra um terminal, acesse a pasta node e execute o comando "node index.js".

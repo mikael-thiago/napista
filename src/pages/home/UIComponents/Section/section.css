@@ -6,24 +6,26 @@
 }
 
 .section-span{
-    width: 100%;
+    width: 90%;
     margin: 10px 0;
-}
-
-.section-title{
-    font-size: 1.8em;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5em;
     color: white;
     font-weight: bold;
-    margin: 15px 0;
     box-sizing: border-box;
-    padding: 0 35px;
+    
+    padding-top: 75px;
+    align-self: center;
 }
 
-.section-content-200{
+
+.section-content{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin-bottom: 40px;
+    padding-top: 20px;
 }
 
 .scrollable{
