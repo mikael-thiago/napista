@@ -165,10 +165,12 @@ const Movie = ({ match }) => {
 
                             <div className="movie-details">
 
-                                <div className="movie-genres">
-                                    {"Gêneros:" + movieData.genres.map((genre, index) => ((index === movieData.genres.length - 1) ? " " + genre.name : " " + genre.name))
-                                    }
-                                </div>
+                                {movieData.genres ? (
+                                    <div className="movie-genres">
+                                        {"Gêneros:" + movieData.genres.map((genre, index) => ((index === movieData.genres.length - 1) ? " " + genre.name : " " + genre.name))
+                                        }
+                                    </div>
+                                ) : <></>}
 
                                 <div className="separator"> • </div>
 
@@ -176,23 +178,28 @@ const Movie = ({ match }) => {
                                     {(durationTime.hours > 0 ? durationTime.hours + "h" : "") + durationTime.minutes + "min"}
                                 </div>
 
-                                <div className="separator"> • </div>
-
                                 {release_date ? (
-                                    <div className="movie-release">
-                                        {release_date.split("-").reverse().map((datePart, index) => (
-                                            (index === release_date.split("-").length - 1) ? datePart : datePart + "/"
-                                        ))}
-                                    </div>
+                                    <>
+                                        <div className="separator"> • </div>
+
+                                        <div className="movie-release">
+                                            {release_date.split("-").reverse().map((datePart, index) => (
+                                                (index === release_date.split("-").length - 1) ? datePart : datePart + "/"
+                                            ))}
+                                        </div>
+                                    </>
                                 ) : <></>}
 
-                                {movieData.popularity !== "" ? (<>
-                                    <div className="separator"> • </div>
+                                {movieData.popularity !== "" ? (
+                                    <>
+                                        <div className="separator"> • </div>
 
-                                    <div className="movie-popularity">
-                                        {"Popularidade: " + movieData.popularity}
-                                    </div></>
-                                ) : <></>}
+                                        <div className="movie-popularity">
+                                            {"Popularidade: " + movieData.popularity}
+                                        </div>
+                                    </>
+                                ) : <></>
+                                }
 
                             </div>
 
@@ -215,13 +222,17 @@ const Movie = ({ match }) => {
                                     </>
                                 ) : <></>}
                             </div>
-                            <div className="movie-details">
 
-                                {"Status: " + (movieData.status === "Planned" ? "Em planejamento" : "Lançado")}
+                            <div className="movie-details">
+                                <div className="movie-status">
+                                    {"Status: " + (movieData.status === "Planned" ? "Em planejamento" : "Lançado")}
+                                </div>
                             </div>
+
                             <div className="movie-description">
                                 {movieData.overview}
                             </div>
+
                             <div className="movie-rating">
                                 <div className="movie-rating-container">
                                     <span className="glyphicon glyphicon-star movie-rating-icon">
@@ -238,13 +249,11 @@ const Movie = ({ match }) => {
                             </div>
                         </div>
 
-
                         <button className="favorite-button" onClick={favorite ? handleUnfavoriteMovie : handleFavoriteMovie}>
                             <span className={"fa " + (favorite ? "fa-heart favorited" : "fa fa-heart-o unfavorited")} />
                         </button>
 
                     </div>
-
 
                     <div className="movie-info-body">
 
