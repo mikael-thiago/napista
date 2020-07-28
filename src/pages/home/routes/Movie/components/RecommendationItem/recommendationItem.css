@@ -1,7 +1,7 @@
 .recommendation-item{
     width: 400px;
     min-width: 400px;
-    height: 250px;
+    height: 225px;
     margin: 0 10px;
     border: none;
     outline: none;
@@ -48,4 +48,22 @@
 
 .recommendation-item-year-average *{
     margin-right: 10px;
+}
+
+@media screen and (max-width: 800px){
+    .recommendation-item{
+        width: 300px;
+        min-width: 300px;
+        height: 169;;
+    }
+    
+}
+
+@media screen and (max-width: 450px){
+    .recommendation-item{
+        width: 200px;
+        min-width: 200px;
+        height: 113px;
+    }
+    
 }

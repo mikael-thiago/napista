@@ -57,16 +57,21 @@ const Movie = ({ match }) => {
     const [movieData, setMovieData] = useState({
         backdrop_path: "",
         poster_path: "",
-        genres: [],
         release_date: "",
+        budget: "",
+        production_countries: [],
         cast: [],
         videos: [],
         recommendations: [],
+        genres: [],
         runtime: 0
     });
 
     const release_date = movieData.release_date || "";
     const back_image_url = movieData.backdrop_path || movieData.poster_path || "";
+    const budget = movieData.budget || "";
+
+    const mainProductionCountry = movieData.production_countries[0] || "";
 
     const trailers = movieData.videos.filter((video) => video.type === "Trailer");
 
@@ -95,7 +100,7 @@ const Movie = ({ match }) => {
                         <div className="movie-tagline">
                             {movieData.tagline}
                         </div>
-                        <div className="movie-genres-release">
+                        <div className="movie-genres-release-popularity-budget">
 
                             <div className="movie-genres">
                                 {"Gêneros:" + movieData.genres.map((genre, index) => ((index === movieData.genres.length - 1) ? " " + genre.name : " " + genre.name))
@@ -114,6 +119,18 @@ const Movie = ({ match }) => {
                                 {release_date.split("-").reverse().map((datePart, index) => (
                                     (index === release_date.split("-").length - 1) ? datePart : datePart + "/"
                                 ))}
+                            </div>
+
+                            <div className="separator"> • </div>
+
+                            <div className="movie-popularity">
+                                {"Popularidade: " + movieData.popularity}
+                            </div>
+
+                            <div className="separator"> • </div>
+
+                            <div className="movie-budget">
+                                {"Orçamento: " + (mainProductionCountry.iso_3166_1 === "US" ? "U$ " : "R$ ") + budget.toLocaleString("pt-BR")}
                             </div>
 
                         </div>

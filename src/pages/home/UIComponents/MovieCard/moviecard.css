@@ -41,47 +41,6 @@
     font-weight: 700;
 }
 
-.movie-link{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    transition: .5s;
-    color: #cccccc;
-}
-
-.movie-link:hover{
-    color: white;
-}
-
-.movie-poster{
-    width: 90%;
-    height: 70%;
-    margin-bottom: 10px;
-    margin-top: -10px;
-    border-radius: 10px;
-    background-color: #555555;
-}
-
-.movie-poster img{
-    border-radius: 10px;
-    width: 100%;
-    height: 100%;
-}
-
-.movie-title-card{
-    text-align: center;
-    width: 90%;
-    font-size: 1em;
-    font-weight: bold;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
 
 .favorite-movie-button{
     border-radius: 50%;

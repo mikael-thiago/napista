@@ -48,7 +48,7 @@
     margin: 10px 0;
 }
 
-.movie-info > .movie-genres-release{
+.movie-info > .movie-genres-release-popularity-budget{
     margin: 10px 0;
     display: flex;
     align-items: center;
