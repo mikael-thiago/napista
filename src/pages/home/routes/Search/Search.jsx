@@ -32,8 +32,7 @@ const SearchPage = withRouter(({ match }) => {
 
     const [searchResult, setSearchResult] = useState({
         results: [],
-        totalPages: 0,
-        loaded: false
+        totalPages: 0
     });
 
     const movies = searchResult.results;
@@ -45,20 +44,24 @@ const SearchPage = withRouter(({ match }) => {
     const addLoadingEffect = () => {
         let loader = document.getElementsByClassName("loader")[0];
 
-        loader.style.zIndex = 5;
-        loader.style.display = "block";
+        if (loader) {
+            loader.style.zIndex = 5;
+            loader.style.display = "block";
 
-        wrapperRef.current.style.filter = "brightness(.5)";
+            wrapperRef.current.style.filter = "brightness(.5)";
+        }
 
     }
 
     const removeLoadingEffect = () => {
         let loader = document.getElementsByClassName("loader")[0];
 
-        wrapperRef.current.style.filter = "";
+        if (loader) {
+            wrapperRef.current.style.filter = "";
 
-        loader.style.zIndex = 0;
-        loader.style.display = "none";
+            loader.style.zIndex = 0;
+            loader.style.display = "none";
+        }
     }
 
     useEffect(() => {
@@ -67,8 +70,7 @@ const SearchPage = withRouter(({ match }) => {
             removeLoadingEffect();
             setSearchResult({
                 results: searchResultResponse.results,
-                totalPages: searchResultResponse.total_pages,
-                loaded: true
+                totalPages: searchResultResponse.total_pages
             });
 
         });

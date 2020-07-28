@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 //Functions
 import { getImageBaseUrl } from "../../../../api_config";
-import { getFavoritedMovies, unfavoriteMovie } from "../../../../api-calls/api-calls";
+import { getFavoritedMovies, unfavoriteMovie, isFavorite } from "../../../../api-calls/api-calls";
 
 //Components
 import { Link } from "react-router-dom";
@@ -18,6 +18,8 @@ const FavoriteMovieCard = ({ movie, imageBaseUrl, unfavoriteFunction }) => {
     const cardBackgroundRef = useRef();
 
     const posterUrl = movie.poster_path ? imageBaseUrl + "w342" + movie.poster_path : "";
+
+    console.log(movie.title + " " + movie.id + " " + isFavorite(movie.id));
 
     const brightOnHover = () => {
         cardBackgroundRef.current.style.filter = "brightness(1)";

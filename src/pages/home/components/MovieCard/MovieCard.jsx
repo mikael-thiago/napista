@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 //Functions
 import { favoriteMovie, unfavoriteMovie, isFavorite } from "../../../../api-calls/api-calls";
@@ -77,8 +77,8 @@ const MovieCard = ({ movie, imageBaseUrl }) => {
                 </div>
             </Link>
 
-            <button style={{ display: (detectMob() ? "flex" : "none") }} className={"favorite-movie-button " + (favorite ? "unfavorite" : "favorite")} onMouseEnter={showFavoriteButton} onMouseLeave={hideFavoriteButton} onClick={favorite ? handleUnfavoriteMovie : handleFavoriteMovie} ref={favoriteButtonRef}>
-                <span className={"favorite-movie-icon " + (favorite ? "fa fa-minus" : "fa fa-heart")}></span>
+            <button style={{ display: (detectMob() ? "flex" : "none") }} className={"favorite-movie-button " + (isFavorite(movie.id) ? "unfavorite" : "favorite")} onMouseEnter={showFavoriteButton} onMouseLeave={hideFavoriteButton} onClick={isFavorite(movie.id) ? handleUnfavoriteMovie : handleFavoriteMovie} ref={favoriteButtonRef}>
+                <span className={"favorite-movie-icon " + (isFavorite(movie.id) ? "fa fa-minus" : "fa fa-heart")}></span>
             </button>
 
         </div>
