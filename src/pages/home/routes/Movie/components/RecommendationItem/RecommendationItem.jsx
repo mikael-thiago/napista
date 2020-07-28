@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./recommendationItem.css";
 import { getImageBaseUrl } from "../../../../../../services/api_config";
 import { Link } from "react-router-dom";
 
 const RecommendationItem = ({ recommendation }) => {
+
+    const cardBackgroundRef = useRef();
 
     const releaseDate = recommendation.release_date.split("-");
 
@@ -11,10 +13,18 @@ const RecommendationItem = ({ recommendation }) => {
 
     const imageBaseUrl = getImageBaseUrl();
 
-    return (
-        <Link to={"/movie/" + recommendation.id} className="recommendation-item">
-            <div className="recommendation-item-background"
+    const brightOnHover = () => {
+        cardBackgroundRef.current.style.filter = "brightness(.65)";
+    }
 
+    const unbrightOnHover = () => {
+        cardBackgroundRef.current.style.filter = "";
+    }
+
+    return (
+        <Link to={"/movie/" + recommendation.id} className="recommendation-item" onMouseEnter={brightOnHover} onMouseLeave={unbrightOnHover}>
+            <div className="recommendation-item-background"
+                ref={cardBackgroundRef}
                 style={{ backgroundImage: "url('" + imageBaseUrl + "w780" + recommendation.backdrop_path + "')" }}
             >
 

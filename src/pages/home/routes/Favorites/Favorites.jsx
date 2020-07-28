@@ -14,6 +14,7 @@ import "./favorites.css";
 const FavoriteMovieCard = ({ movie, imageBaseUrl, unfavoriteFunction }) => {
 
     const unfavoriteButtonRef = useRef();
+    const cardBackgroundRef = useRef();
 
     const posterUrl = movie.poster_path ? imageBaseUrl + "w342/" + movie.poster_path : "";
 
@@ -25,20 +26,33 @@ const FavoriteMovieCard = ({ movie, imageBaseUrl, unfavoriteFunction }) => {
         unfavoriteButtonRef.current.style.display = "";
     }
 
+    const brightOnHover = () => {
+        cardBackgroundRef.current.style.filter = "brightness(.6)";
+    }
+
+    const unbrightOnLeave = () => {
+        cardBackgroundRef.current.style.filter = "";
+    }
+
     return (
-        <div className="movie-card">
-            <Link className="movie-link" to={"/movie/" + movie.id} onMouseEnter={showUnfavoriteButton} onMouseLeave={hideUnfavoriteButton} style={{ textDecoration: "none" }}>
-                <div className="movie-poster">
+        <Link to={"/movie/" + movie.id} className="movie-card" onMouseEnter={brightOnHover} onMouseLeave={unbrightOnLeave}>
+            <div className="movie-card-content" onMouseEnter={showUnfavoriteButton} onMouseLeave={hideUnfavoriteButton}>
+                <div className="movie-card-background" ref={cardBackgroundRef}>
                     <img src={posterUrl} alt="" />
                 </div>
-                <div className="movie-title-card">
-                    {movie.title}
+                <div className="movie-card-text-wrapper">
+                    <div className="movie-card-text">
+                        {movie.title}
+                    </div>
+
                 </div>
-            </Link>
+            </div>
+
             <button className="unfavorite-movie-button" onMouseEnter={showUnfavoriteButton} onClick={() => unfavoriteFunction(movie.id)} onMouseLeave={hideUnfavoriteButton} ref={unfavoriteButtonRef}>
                 <span className="unfavorite-movie-icon glyphicon glyphicon-remove"></span>
             </button>
-        </div>
+
+        </Link>
     );
 
 }
