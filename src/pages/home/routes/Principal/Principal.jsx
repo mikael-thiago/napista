@@ -10,10 +10,13 @@ import MovieCard from "../../components/MovieCard/MovieCard";
 
 //Styles
 import "./principal.css";
+import Loader from "../../Widgets/Loader/Loader";
 
 const Principal = () => {
 
     const [movieData, setMovieData] = useState([]);
+
+    const loaded = (movieData.length > 0);
 
     useEffect(() => {
         getMostPopularMovies(1).then((mostPopularMovies) => {
@@ -22,15 +25,21 @@ const Principal = () => {
     }, []);
 
     return (
-        <div className="principal-wrapper">
-            <Section title="Filmes mais populares">
-                {movieData.map((movie, index) => (
-                    <MovieCard key={index} movie={movie} imageBaseUrl={getImageBaseUrl()} />
-                )
-                )}
-            </Section>
 
-        </div>
+        loaded ? (
+            <>
+                <div className="principal-wrapper">
+                    <Section title="Filmes mais populares">
+                        {movieData.map((movie, index) => (
+                            <MovieCard key={index} movie={movie} imageBaseUrl={getImageBaseUrl()} />
+                        )
+                        )}
+                    </Section>
+
+                </div>
+            </>
+        ) : <Loader />
+
     )
 }
 

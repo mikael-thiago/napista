@@ -50,7 +50,7 @@ const FavoriteMovieCard = ({ movie, imageBaseUrl, unfavoriteFunction }) => {
 }
 
 const FavoritesPage = () => {
-    const [movieData, setMovieData] = useState(null);
+    const [movieData, setMovieData] = useState([]);
 
     const wrapperRef = useRef();
 
@@ -95,20 +95,18 @@ const FavoritesPage = () => {
     }
 
     return (
-        movieData ? (
-            <>
-                <Loader />
-                <div ref={wrapperRef} className="favorites-wrapper" >
-                    <Section>
-                        {movieData.map((movie, index) => (
-                            <FavoriteMovieCard unfavoriteFunction={handleUnfavoriteMovie} key={index} movie={movie} imageBaseUrl={getImageBaseUrl()} />
-                        )
-                        )}
-                    </Section>
+        <>
+            <Loader />
+            <div ref={wrapperRef} className="favorites-wrapper" >
+                <Section>
+                    {movieData.map((movie, index) => (
+                        <FavoriteMovieCard unfavoriteFunction={handleUnfavoriteMovie} key={index} movie={movie} imageBaseUrl={getImageBaseUrl()} />
+                    )
+                    )}
+                </Section>
 
-                </div >
-            </>
-        ) : <Loader />
+            </div >
+        </>
     )
 }
 

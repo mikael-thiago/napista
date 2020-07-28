@@ -28,6 +28,7 @@ const SearchPage = withRouter(({ match }) => {
     const page = match.params.page || 1;
 
     const pagesLinksRef = useRef();
+    const wrapperRef = useRef();
 
     const [searchResult, setSearchResult] = useState({
         results: [],
@@ -36,12 +37,34 @@ const SearchPage = withRouter(({ match }) => {
     });
 
     const movies = searchResult.results;
+
     const totalPages = searchResult.totalPages;
 
     const sectionTitle = searchResult.results.length !== 0 ? ("Resultados encontrados para " + query) : "Não foram encontrados resultados";
 
+    const addLoadingEffect = () => {
+        let loader = document.getElementsByClassName("loader")[0];
+
+        loader.style.zIndex = 5;
+        loader.style.display = "block";
+
+        wrapperRef.current.style.filter = "brightness(.5)";
+
+    }
+
+    const removeLoadingEffect = () => {
+        let loader = document.getElementsByClassName("loader")[0];
+
+        wrapperRef.current.style.filter = "";
+
+        loader.style.zIndex = 0;
+        loader.style.display = "none";
+    }
+
     useEffect(() => {
+        addLoadingEffect();
         getSearchResult(query, page).then((searchResultResponse) => {
+            removeLoadingEffect();
             setSearchResult({
                 results: searchResultResponse.results,
                 totalPages: searchResultResponse.total_pages,
@@ -60,8 +83,9 @@ const SearchPage = withRouter(({ match }) => {
     }
 
     return (
-        searchResult.loaded ?
-            (<div className="search-wrapper">
+        <>
+            <Loader />
+            <div className="search-wrapper" ref={wrapperRef}>
                 <div className="search-content">
                     <Section title={sectionTitle} aditional={totalPages > 0 ? "Página " + page + " de " + totalPages : ""}>
                         {movies.map((movie, index) => (
@@ -97,7 +121,9 @@ const SearchPage = withRouter(({ match }) => {
                 ) : <></>}
 
 
-            </div>) : <Loader />
+            </div>
+        </>
+
     )
 });
 
