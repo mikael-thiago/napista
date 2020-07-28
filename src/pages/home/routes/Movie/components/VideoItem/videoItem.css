@@ -1,0 +1,22 @@
+.video-item{
+    width: 400px;
+    height: 250px;
+    margin-right: 15px;
+}
+
+@media screen and (max-width: 800px){
+    .video-item{
+        width: 350px;
+        height: 200px;
+        margin-right: 10px;
+    }
+}
+
+
+@media screen and (max-width: 450px){
+    .video-item{
+        width: 250px;
+        height: 150px;
+        margin-right: 10px;
+    }
+}

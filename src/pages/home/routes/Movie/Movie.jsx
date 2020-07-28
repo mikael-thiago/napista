@@ -12,12 +12,38 @@ import Carousel from "../../UIComponents/Carousel/Carousel";
 
 //Styles
 import "./movie.css";
+import VideoItem from "./components/VideoItem/VideoItem";
 
 const parseDuratinTime = (min) => {
     let hours = parseInt(min / 60), minutes = min % 60;
 
     return { hours: hours, minutes: (minutes < 10) ? "0" + minutes : minutes };
 
+}
+
+const renderTrailersCarousel = (trailers) => {
+    return (
+        trailers !== [] ? (<Carousel title="Trailers" >
+            {trailers.map((trailer, index) => (
+                <VideoItem key={index} video={trailer} />
+            ))}
+        </Carousel>) : <></>
+    )
+}
+
+const renderCastCarousel = (cast) => {
+
+    const itemWidth = window.innerWidth <= 450 ? 70 : (window.innerWidth <= 800 ? 85 : 100);
+
+    return (
+        cast !== [] ? (
+            <Carousel title="Elenco" itemWidth={itemWidth}>
+                {cast.map((cast_p, index) => (
+                    <CastItem cast={cast_p} key={index} />
+                ))}
+            </Carousel>
+        ) : <></>
+    )
 }
 
 const Movie = ({ match }) => {
@@ -31,15 +57,16 @@ const Movie = ({ match }) => {
         genres: [],
         release_date: "",
         cast: [],
+        videos: [],
         runtime: 0
     });
 
     const release_date = movieData.release_date || "";
     const back_image_url = movieData.backdrop_path || movieData.poster_path || "";
 
-    const durationTime = parseDuratinTime(movieData.runtime);
+    const trailers = movieData.videos.filter((video) => video.type === "Trailer");
 
-    const itemWidth = window.innerWidth <= 450 ? 70 : (window.innerWidth <= 800 ? 85 : 100);
+    const durationTime = parseDuratinTime(movieData.runtime);
 
     useEffect(() => {
         getMovie(movie_id).then((movie) => {
@@ -111,11 +138,8 @@ const Movie = ({ match }) => {
 
                 <div className="movie-info-body">
 
-                    <Carousel itemWidth={itemWidth}>
-                        {movieData.cast.map((cast_p, index) => (
-                            <CastItem cast={cast_p} key={index} />
-                        ))}
-                    </Carousel>
+                    {renderCastCarousel(movieData.cast)}
+                    {renderTrailersCarousel(trailers)}
 
                     <div className="spacer" style={{ height: "50px", minHeight: "50px" }}>
 
