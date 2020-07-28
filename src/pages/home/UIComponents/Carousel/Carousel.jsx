@@ -8,6 +8,8 @@ const Carousel = ({ itemWidth = 100, title = "", children }) => {
     const contentRef = useRef(null);
     const [isOverflowed, setIsOverflowed] = useState(false);
 
+    const carouselWidth = (contentRef.current ? contentRef.current.clientWidth : 200);
+
     useEffect(() => {
 
         setIsOverflowed(contentRef.current.scrollWidth > contentRef.current.clientWidth);
@@ -21,7 +23,7 @@ const Carousel = ({ itemWidth = 100, title = "", children }) => {
                     {title}
                 </div>
             </div>
-            <button className="carousel-controller" onClick={() => { contentRef.current.scrollLeft -= itemWidth * 5 }} style={{ position: "absolute", left: "0", zIndex: 2, display: (isOverflowed ? "" : "none") }}>
+            <button className="carousel-controller" onClick={() => { contentRef.current.scrollLeft -= carouselWidth }} style={{ position: "absolute", left: "0", zIndex: 2, display: (isOverflowed ? "" : "none") }}>
                 <span className="glyphicon glyphicon-chevron-left"></span>
             </button>
 
@@ -29,7 +31,7 @@ const Carousel = ({ itemWidth = 100, title = "", children }) => {
                 {children}
             </div>
 
-            <button className="carousel-controller" onClick={() => { contentRef.current.scrollLeft += itemWidth * 5 }} style={{ position: "absolute", right: "0", zIndex: 2, display: (isOverflowed ? "" : "none") }}>
+            <button className="carousel-controller" onClick={() => { contentRef.current.scrollLeft += carouselWidth }} style={{ position: "absolute", right: "0", zIndex: 2, display: (isOverflowed ? "" : "none") }}>
                 <span className="glyphicon glyphicon-chevron-right"></span>
             </button>
         </section>
