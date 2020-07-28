@@ -62,6 +62,18 @@ const renderRecommendationsCarousel = (recommendations) => {
     )
 }
 
+const renderSimilarsCarousel = (similars) => {
+    return (
+        similars.length !== 0 ? (
+            <Carousel title="Títulos Similares">
+                {similars.map((similar, index) => (
+                    <RecommendationItem key={index} recommendation={similar} />
+                ))}
+            </Carousel>
+        ) : <></>
+    )
+}
+
 const Movie = ({ match }) => {
     const movie_id = match.params.id;
 
@@ -78,6 +90,7 @@ const Movie = ({ match }) => {
         videos: [],
         recommendations: [],
         genres: [],
+        similar: [],
         runtime: 0,
         loaded: false,
         favorite: false
@@ -95,7 +108,7 @@ const Movie = ({ match }) => {
 
     const durationTime = parseDuratinTime(movieData.runtime);
 
-    console.log(isFavorite(movieData.id));
+    const similars = (movieData.similar ? movieData.similar.results : []);
 
     useEffect(() => {
         getMovie(movie_id).then((movie) => {
@@ -216,7 +229,7 @@ const Movie = ({ match }) => {
                         {renderCastCarousel(movieData.cast)}
                         {renderTrailersCarousel(trailers)}
                         {renderRecommendationsCarousel(movieData.recommendations)}
-
+                        {renderSimilarsCarousel(similars)}
 
                         <div className="spacer" style={{ height: "50px", minHeight: "50px" }}>
 

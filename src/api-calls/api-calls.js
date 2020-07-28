@@ -16,7 +16,7 @@ const getMostPopularMovies = async (page) => {
 
 const getMovie = async (movie_id) => {
 
-    const MOVIE_URL = BASE_URL + "movie/" + movie_id + "?api_key=" + API_KEY + "&language=pt-BR&append_to_response=videos,credits,recommendations";
+    const MOVIE_URL = BASE_URL + "movie/" + movie_id + "?api_key=" + API_KEY + "&language=pt-BR&append_to_response=videos,credits,recommendations,similar";
 
     let movieResult = (await axios.get(MOVIE_URL));
 
@@ -28,6 +28,11 @@ const getMovie = async (movie_id) => {
 
     return movieResult.data;
 }
+
+/*
+const getSimilarMovies = async (movie_id) => {
+    const URL = BASE_URL + "movie/"+movie_id+"?api_key="+API_KEY+"&language=pt-BR"
+}*/
 
 const getFavoritedMovies = async () => {
     let favoritedMovies = [];
