@@ -6,11 +6,11 @@ import { getFavoritedMovies, unfavoriteMovie } from "../../../../api-calls/api-c
 
 //Components
 import { Link } from "react-router-dom";
-import Section from "../../UIComponents/Section/Section";
+import Section from "../../components/Section/Section";
 
 //Styles
 import "./favorites.css";
-import Loader from "../../UIComponents/Loader/Loader";
+import Loader from "../../Widgets/Loader/Loader";
 
 const FavoriteMovieCard = ({ movie, imageBaseUrl, unfavoriteFunction }) => {
 

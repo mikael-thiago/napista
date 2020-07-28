@@ -8,13 +8,13 @@ import { getImageBaseUrl } from "../../../../api_config";
 
 //Components
 import CastItem from "./components/CastItem/CastItem";
-import Carousel from "../../UIComponents/Carousel/Carousel";
+import Carousel from "../../components/Carousel/Carousel";
 
 //Styles
 import "./movie.css";
 import VideoItem from "./components/VideoItem/VideoItem";
 import RecommendationItem from "./components/RecommendationItem/RecommendationItem";
-import Loader from "../../UIComponents/Loader/Loader";
+import Loader from "../../Widgets/Loader/Loader";
 
 const parseDuratinTime = (min) => {
     let hours = parseInt(min / 60), minutes = min % 60;

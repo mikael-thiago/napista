@@ -5,8 +5,8 @@ import { getMostPopularMovies } from "../../../../api-calls/api-calls";
 import { getImageBaseUrl } from "../../../../api_config";
 
 //Components
-import Section from "../../UIComponents/Section/Section";
-import MovieCard from "../../UIComponents/MovieCard/MovieCard";
+import Section from "../../components/Section/Section";
+import MovieCard from "../../components/MovieCard/MovieCard";
 
 //Styles
 import "./principal.css";
