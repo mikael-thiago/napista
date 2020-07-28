@@ -10,8 +10,6 @@ const VideoItem = ({ video }) => {
 
     const src = videoPlatformBaseUrl(video.site) + video.key;
 
-    console.log(src);
-
     return (
         <div className="video-item">
             <iframe title={video.name} width="100%" height="100%" src={src}

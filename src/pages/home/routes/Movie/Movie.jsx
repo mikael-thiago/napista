@@ -120,7 +120,6 @@ const Movie = ({ match }) => {
             movie.loaded = true;
             movie.favorite = isFavorite(movie.id);
 
-            console.log(movie.status);
             setMovieData(movie);
 
         })
