@@ -44,7 +44,7 @@ const SearchPage = withRouter(({ match }) => {
     const addLoadingEffect = () => {
         let loader = document.getElementsByClassName("loader")[0];
 
-        if (loader) {
+        if (loader && wrapperRef.current) {
             loader.style.zIndex = 5;
             loader.style.display = "block";
 
@@ -56,7 +56,7 @@ const SearchPage = withRouter(({ match }) => {
     const removeLoadingEffect = () => {
         let loader = document.getElementsByClassName("loader")[0];
 
-        if (loader) {
+        if (loader && wrapperRef.current) {
             wrapperRef.current.style.filter = "";
 
             loader.style.zIndex = 0;

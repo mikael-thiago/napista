@@ -33,9 +33,9 @@ const FavoriteMovieCard = ({ movie, imageBaseUrl, unfavoriteFunction }) => {
                 <div className="movie-card-background" ref={cardBackgroundRef} style={{ backgroundImage: "url('" + posterUrl + "')" }}>
                 </div>
                 <div className="movie-card-text-wrapper">
-                    <div className="movie-card-text">
+                    {/*<div className="movie-card-text">
                         {movie.title}
-                    </div>
+    </div>*/}
 
                 </div>
             </Link>
